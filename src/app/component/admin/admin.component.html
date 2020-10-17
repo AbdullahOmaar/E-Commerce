@@ -1,0 +1,280 @@
+
+
+<!--<div class="container">-->
+<!--    <div>-->
+<!--      <h2 class="text-center">Add New Goods</h2>-->
+<!--      <form #f="ngForm" (ngSubmit)="addNewGood(f)">-->
+<!--        <input type="text" class="form-control" name="name" ngModel placeholder="Name" required>-->
+<!--        <input type="number" class="form-control" name="price" ngModel placeholder="Price" required>-->
+<!--        <input type="text" class="form-control" name="discription" ngModel placeholder="discription" required>-->
+<!--        <input #image type="file" ngModel name="image" required> <br>-->
+<!--        <input type="submit" value="add" class="btn btn-primary" [disabled]="f.invalid">-->
+<!--      </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!---->
+<span class="" *ngFor="let category of categorys" style="align-items: center">
+            <button pButton pRipple [label]="category.label" icon="pi pi-plus" class="p-button-rounded p-button-secondary" (click)="gitCategory(category.label)" ></button>
+      </span>
+<!---->
+<p-table #dt [value]="product" [(selection)]="selectedProduct" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <div class="table-header col ">
+      <span class="p-input-icon-left ">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()" ></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" ></button>
+      </span>
+
+      </div>
+      <div class=" col  ">
+        List of Product
+        <span class="p-input-icon-left ">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+      </span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem"></th>
+      <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+      <th pSortableColumn="country.name">Country <p-sortIcon field="country.name"></p-sortIcon></th>
+      <th pSortableColumn="representative.name">section<p-sortIcon field="section.name"></p-sortIcon></th>
+      <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+      <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+      <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+      <th style="width: 10rem">Edite</th>
+    </tr>
+    <tr>
+      <th>
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th>
+        <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Search by Name" class="p-column-filter">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="dt.filter($event.target.value, 'country', 'contains')" placeholder="Search by Country" class="p-column-filter">
+      </th>
+      <th>
+        <p-multiSelect [options]="categorys" placeholder="All" (onChange)="onRepresentativeChange($event)" styleClass="p-column-filter" optionLabel="name">
+          <ng-template let-option pTemplate="item">
+            <div class="p-multiselect-representative-option">
+              <span class="p-ml-1">{{option.label}}</span>
+            </div>
+          </ng-template>
+        </p-multiSelect>
+      </th>
+      <th>
+        <p-calendar (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')" [showButtonBar]="true" styleClass="p-column-filter" placeholder="Registration Date" [readonlyInput]="true" dateFormat="dd-mm-yy"></p-calendar>
+      </th>
+      <th>
+        <p-dropdown [options]="statuses" (onChange)="dt.filter($event.value, 'status', 'equals')" styleClass="p-column-filter" placeholder="Select a Status" [showClear]="true">
+          <ng-template let-option pTemplate="item">
+            <span [class]="'customer-badge status-' + option.value">&#123;&#123;option.label&#125;&#125;</span>
+          </ng-template>
+        </p-dropdown>
+      </th>
+      <th>
+        <input pInputText type="text" (input)="onActivityChange($event)" placeholder="Minimum" class="p-column-filter" >
+      </th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr class="p-selectable-row">
+      <td>
+        <p-tableCheckbox [value]="product"></p-tableCheckbox>
+      </td>
+      <td>
+        <span class="p-column-title"></span>
+        {{product.name}}
+      </td>
+      <td>
+        <span class="p-column-title"></span>
+        <span class="image-text">{{product.country}}</span>
+      </td>
+      <td>
+        <span class="p-column-title"></span>
+        <span class="image-text">{{product.category}}</span>
+      </td>
+      <td>
+        <span class="p-column-title"></span>
+        {{product.date.seconds * 1000 | date:'dd-MM-yyyy'}}
+      </td>
+      <td>
+        <span class="p-column-title"></span>
+        <span [class]="'customer-badge status-' + product.status">{{product.status}}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Activity</span>
+        <!--        <p-progressBar [value]="product.activity" [showValue]="false"></p-progressBar>-->
+      </td>
+      <td style="text-align: center">
+        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(product)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No Prodacet found.</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<!-- add New-->
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '850px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content" >
+    <form #f="ngForm" (ngSubmit)="addNewGood(f)">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="inputName4">Name</label>
+          <input type="email" class="form-control" id="inputName4" placeholder="Name"
+                 name="name"  ngModel  required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputprice4">price</label>
+          <input type="text" class="form-control" id="inputprice4" placeholder="price"
+                 name="price" ngModel required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputDate">Date</label>
+          <p-calendar id="inputDate"
+                      [showButtonBar]="true" styleClass="" placeholder="Registration Date" [readonlyInput]="true" dateFormat="dd-mm-yy"
+                      ngModel name="date">
+          </p-calendar>
+        </div>
+        <div  class="form-group col-md-6">
+          <label for="inputStatus4">Status</label>
+          <p-dropdown name="status"  id="inputStatus4"
+                      ngModel [options]="statuses"   placeholder="Select a Status" >
+            <ng-template let-option pTemplate="item" >
+              <span >{{option.label}}</span>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputcountry">country</label>
+          <input type="text" class="form-control" id="inputcountry"
+                 name="country" ngModel>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputcategory">section</label>
+          <p-dropdown name="category"  id="inputcategory"
+                      ngModel [options]="categorys"   placeholder="Select a Status" >
+            <ng-template let-option pTemplate="item" >
+              <span >{{option.label}}</span>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputDiscription">discription</label>
+        <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
+               name="discription" ngModel >
+      </div>
+
+      <div class="form-group">
+        <label for="inputimage2"> image</label>
+        <input type="text" class="form-control" id="inputimage2" placeholder="image"
+               #image type="file" ngModel  name="image" required>
+      </div>
+      <div>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" style="margin-left: 65%"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " (click)="hideDialog()" ></button>
+      </div>
+    </form>
+  </ng-template>
+</p-dialog>
+
+<!-- edit -->
+<p-dialog [(visible)]="editDialog" [style]="{width: '850px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content"   >
+    <form #f="ngForm" (ngSubmit)="addNewGood(f)"   >
+      <div class="form-row" >
+        <div class="form-group col-6">
+          <label for="inputName4">Name</label>
+          <input type="email" class="form-control" id="inputName4" placeholder="Name"
+                 name="name"  [(ngModel)]="editProduct.name"  required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputprice4">price</label>
+          <input type="text" class="form-control" id="inputprice4" placeholder="price"
+                 name="price" [(ngModel)]="editProduct.price" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputDate">Date</label>
+          <p-calendar id="inputDate"
+                      [showButtonBar]="true" styleClass="" placeholder="Registration Date" [readonlyInput]="true" dateFormat="dd-mm-yy"
+                      [(ngModel)]="editProduct.dateFormat " name="date">
+          </p-calendar>
+
+        </div>
+        <div  class="form-group col-md-6">
+          <label for="inputStatus4">Status</label>
+          <p-dropdown name="status"  id="inputStatus4"
+                      [(ngModel)]="editProduct.status" [options]="statuses"   placeholder="Select a Status" >
+            <ng-template let-option pTemplate="item" >
+              <span >{{option.label}}</span>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputcountry">country</label>
+          <input type="text" class="form-control" id="inputcountry"
+                 name="country" [(ngModel)]="editProduct.country">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputcategory">section</label>
+          <p-dropdown name="category"  id="inputcategory"
+                      [(ngModel)]="editProduct.category" [options]="categorys"   placeholder="Select a Status" >
+            <ng-template let-option pTemplate="item" >
+              <span >{{option.label}}</span>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputDiscription">discription</label>
+        <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
+               name="discription" [(ngModel)]="editProduct.discription" >
+      </div>
+
+      <div class="form-group">
+        <label for="inputimage2"> image</label>
+        <input type="text" class="form-control" id="inputimage2" placeholder="image"
+               #image type="file" [(ngModel)]="editProduct.image"  name="image" required>
+      </div>
+      <div>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" style="margin-left: 65%"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " (click)="hideDialog()" ></button>
+      </div>
+    </form>
+  </ng-template>
+</p-dialog>
+
+<!-- confirmDialog -->
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+<p-toast></p-toast>

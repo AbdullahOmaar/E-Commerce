@@ -1,0 +1,71 @@
+<div class="container" >
+<form  #f="ngForm" (ngSubmit)="signup(f)">
+
+  <p class="h4 mb-4 ">Sign Up</p>
+
+  <div class="form-row mb-4">
+    <div class="col">
+      <label  class="form__label"><i>First Name</i></label>
+      <input name="name"
+             ngModel
+             required
+             type="text" id="Firstname" class="form-control" placeholder="First name">
+    </div>
+    <div class="col">
+      <label  class="form__label"><i>Last Name</i></label>
+      <input  name="lastname"
+              ngModel
+              required
+              type="text" id="Lastname" class="form-control" placeholder="Last name">
+    </div>
+  </div>
+
+  <label class="form__label"><i>Email</i></label>
+  <input  name="email"
+          ngModel
+          email
+          required
+          type="email" id="email" class="form-control mb-4" placeholder="E-mail">
+
+
+  <label  class="form__label"><i>Password</i></label>
+  <div class="form-row mb-4">
+    <div class="p-inputgroup">
+      <input  name="password"
+              ngModel
+              required
+              #x
+              type="password" id="password" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+      <button type="button"
+              class="btn btn-light"
+              (click)="x.type=x.type=='password'?'text':'password'"
+      > <i class="fa fa-eye fa" style="height: 20px"></i></button>
+    </div>
+
+  </div>
+
+  <label class="form__label"><i>Phone</i></label>
+  <input  name="phone"
+          ngModel
+          id="numbers" pattern="[0-9.]+" type="phone"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+          required
+          class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+
+
+  <!-- Sign up button -->
+  <button class="btn btn-info my-4 btn-block"
+          [disabled]="f.invalid"
+          type="submit">
+    <i class="fa fa-cog fa-spin fa fa-fw " style="font-size: 20px"></i>
+    Sign Up
+  </button>
+
+  <p >Member?
+    <a href="" [routerLink]="['/']"> login</a>
+  </p>
+
+</form>
+ <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+
+</div>

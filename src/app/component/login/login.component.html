@@ -1,0 +1,45 @@
+
+
+<form class="container" #f="ngForm" (ngSubmit)="login(f)">
+
+  <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <label for="email" class="form__label"><i>Email</i></label>
+  <input name="email"
+         ngModel
+         required
+         type="text"
+         id="email"
+         class="form-control mb-4"
+         placeholder="email"
+  >
+
+  <!-- Password -->
+  <label for="password" class="form__label"><i>Password</i></label>
+
+  <input
+         ngModel
+          name="password"
+         required
+         type="password" id="password"
+         class="form-control mb-4" placeholder="Password">
+  <div class="d-flex justify-content-around">
+
+
+  </div>
+  <!-- Sign in button -->
+  <button [disabled]="f.invalid"
+          class="btn btn-info btn-block my-4"
+          type="submit" value="login">
+    <i class="fa fa-cog fa-spin fa fa-fw " style="font-size: 20px"></i>
+    Sign in
+  </button>
+  <!-- Register -->
+  <p>Not a member?
+    <a href="" routerLink="/RegisterComponent"> Register</a>
+  </p>
+
+</form>

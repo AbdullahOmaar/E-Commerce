@@ -1,0 +1,33 @@
+<p-menubar [model]="items">
+  <div>
+    <div class="p-grid">
+      <div class="p-col" >
+        <p-button label="Shop"  routerLink="/shop"></p-button>
+      </div>
+      <div class="p-col" *ngIf="isUser">
+        <p-button label="admin"  routerLink="/admin"></p-button>
+      </div>
+      <div class="p-col" >
+        <p-button label="Home"  routerLink="/"></p-button>
+      </div>
+      <div class="p-col" >
+        <input  type="text" pInputText placeholder="Search" class="Search" >
+      </div>
+      <div class="p-col" *ngIf="isUser">
+        <p-button label="cart"  routerLink="/cart"></p-button>
+      </div>
+      <div class="p-col" *ngIf="isUser">
+        <p-button label="Messages" icon="pi pi-users" styleClass="p-button-warning" badge="8" badgeClass="p-badge-danger"></p-button>
+      </div>
+      <div class="p-col" *ngIf="!isUser">
+        <p-button label="signup" routerLink="/signup"></p-button>
+      </div>
+      <div class="p-col" *ngIf="!isUser">
+        <p-button label="login"  routerLink="/login"></p-button>
+      </div>
+      <div class="p-col" *ngIf="isUser">
+        <p-button label="logout"  routerLink="/login" (click)="logout()"></p-button>
+      </div>
+    </div>
+  </div>
+</p-menubar>
