@@ -50,6 +50,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {FocusTrapModule} from 'primeng/focustrap';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {FileUploadModule} from 'primeng/fileupload';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 
 @NgModule({
@@ -117,7 +119,10 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     ProgressBarModule,
     FocusTrapModule,
     ConfirmDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule,
+    OverlayPanelModule
+
 
 
 

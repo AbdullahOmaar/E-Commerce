@@ -9,6 +9,9 @@ import {PrimeNGConfig} from 'primeng/api';
 import {CartService} from '../../services/cart.service';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {FileUpload, FileUploadModule} from 'primeng/fileupload';
+import {CategoryService} from '../../services/category.service';
+import {Category} from '../../interface/category';
 
 @Component({
   selector: 'app-admin',
@@ -19,6 +22,7 @@ import {Router} from '@angular/router';
 export class AdminComponent implements OnInit {
 
   @ViewChild('image') image: ElementRef
+  @ViewChild('fileInput') fileInput: FileUpload;
 
   customers: Good[];
 
@@ -43,7 +47,15 @@ export class AdminComponent implements OnInit {
 
   submitted: boolean;
 
+  uploadedFiles: any[] = [];
 
+  AddCategorydisplay: boolean = false;
+
+  Categorys : Category[] = []
+
+  products: Category[];
+
+  selectedCategory: Category;
 
 
   @ViewChild('dt') table: Table;
@@ -51,6 +63,7 @@ export class AdminComponent implements OnInit {
   constructor(private gs:GoodsService,
               private cs: CartService,
               private as: AuthService,
+              private cgs: CategoryService,
               private router: Router,
               private primengConfig: PrimeNGConfig,
               private confirmationService: ConfirmationService,
@@ -69,12 +82,23 @@ export class AdminComponent implements OnInit {
         this.loading = false;
         console.log(this.product)
       })
+    //categorys
+    this.cgs.gitAllCategory().subscribe(
+      data => {
+        this.Categorys= data.map(element=> {
+          return{
+            id: element.payload.doc.id,
+            ...element.payload.doc.data() as Category
+          }
+        })
+      })
     this.categorys = [
-      {label: "men's",name: "men's", value: "men's"},
-      {label: "Women's",name: "Women's", value: "Women's"},
-      {label: "Kid's",name: "Kid's", value: "Kid's"},
+      {label: "Men's Fashion",name: "Men's Fashion", value: "Men's Fashion"},
+      {label: "Women's Fashion",name: "Women's Fashion", value: "Women's Fashion"},
+      {label: "Kid's Fashion",name: "Kid's Fashion", value: "Kid's Fashion"},
       {label: 'Sports & Fitness',name: 'Sports & Fitness', value: 'Sports & Fitness'},
       {label: 'Bags',name: 'Bags', value: 'Bags'},
+      {label: 'main-slider',name: 'main-slider', value: 'main-slider'},
     ];
 
     this.statuses = [
@@ -141,7 +165,6 @@ export class AdminComponent implements OnInit {
     )
       .catch(res => console.log(res.message))
     this.productDialog = false;
-
   }
 
   openNew() {
@@ -157,26 +180,60 @@ export class AdminComponent implements OnInit {
 
 
 // service
-  gitCategory(category) {
-    this.gs.gitCategory(category).subscribe(
-      data => {
-        this.product = data.map(element => {
-          return {
-            id: element.payload.doc.id,
-            ...element.payload.doc.data() as Good
-          }
-        })
-        this.loading = false;
-        console.log(this.product)
-      })
+
+  AddCategoryDialog() {
+    this.AddCategorydisplay = true;
+  }
+  public onSelectImage(evt: any) {
+    this.uploadedFiles = evt[0];
   }
 
-  // edit product
-  edit(product){
+  AddNewCategory(form: NgForm, evt: any){
+    let
+      name  =(<Good>form.value).name,
+      discription =(<Good>form.value).discription,
+      image = this.uploadedFiles
+      this.cgs.AddCategory(name,discription, image).then(
+      res => console.log(res),
+    ).then(
+        res => this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000})
+      )
+      .catch(res => console.log(res.message))
+     this.uploadedFiles  = []
+      form.reset()
+       this.AddCategorydisplay=false
+
+  }
+
+
+
+
+
+
+  // updateDialogt
+  updateDialog(product){
     this.editProduct = product
-    this.editProduct.data
-    console.log(this.editProduct.data)
+    console.log(this.editProduct.id)
     this.editDialog = true
+  }
+
+  // update product
+  update(form: NgForm){
+    let
+      id = this.editProduct.id,
+      name  =(<Good>form.value).name,
+      price =(<Good>form.value).price,
+      discription =(<Good>form.value).discription,
+      image =(<HTMLInputElement>this.image.nativeElement).files[0],
+      country =(<Good>form.value).country,
+      status =(<Good>form.value).status,
+      date =(<Good>form.value).date,
+      category =(<Good>form.value).category
+      this.gs.update(id,name, price, discription, image, country, status, date, category).then(
+      res => console.log(res)
+    )
+      .catch(res => console.log(res.message))
+    this.productDialog = false;
   }
 
   // delete product
@@ -191,5 +248,24 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+
+  onRowSelect(event) {
+    this.messageService.add({severity: 'info', summary: 'Product Selected', detail: event.data.name});
+    this.gitCategory(event.data.name)
+  }
+  gitCategory(selectedCategory) {
+    this.gs.gitCategory(selectedCategory).subscribe(
+      data => {
+        this.product = data.map(element => {
+          return {
+            id: element.payload.doc.id,
+            ...element.payload.doc.data() as Good
+          }
+        })
+        this.loading = false;
+        console.log(this.product)
+      })
+  }
+
 
 }

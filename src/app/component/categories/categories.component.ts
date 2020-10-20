@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Good} from '../../interface/good';
 import {GoodsService} from '../../services/goods.service';
+import {CategoryService} from '../../services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -11,10 +12,11 @@ export class CategoriesComponent implements OnInit {
 
   goods : Good[] = []
 
-  constructor(private gs: GoodsService,) { }
+  constructor(private gs: GoodsService,
+              private cs: CategoryService) { }
 
   ngOnInit(): void {
-    this.gs.gitAllGoods().subscribe(
+    this.cs.gitAllCategory().subscribe(
       data => {
         this.goods= data.map(element=> {
           return{

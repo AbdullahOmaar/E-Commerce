@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
   constructor(private gs: GoodsService,) { }
 
   ngOnInit(): void {
-    this.gs.gitAllGoods().subscribe(
+    this.gs.mainslider().subscribe(
       data => {
         this.goods= data.map(element=> {
           return{

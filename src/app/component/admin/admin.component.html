@@ -14,9 +14,17 @@
 <!--</div>-->
 
 <!---->
-<span class="" *ngFor="let category of categorys" style="align-items: center">
-            <button pButton pRipple [label]="category.label" icon="pi pi-plus" class="p-button-rounded p-button-secondary" (click)="gitCategory(category.label)" ></button>
-      </span>
+<div class="admin">
+  <span   style="align-items: center">
+          <p-button  pRipple  class="p-button-secondary" (click)="AddCategoryDialog()" icon="pi pi-external-link" label="Add Category"></p-button>
+  </span>
+  <span style="margin-left: 15px">
+  <p-button [label]="selectedCategory ? selectedCategory.name : 'Select a Product'" icon="pi pi-search" (click)="op.toggle($event)" ></p-button>
+  </span>
+<!--  <span class="" *ngFor="let category of Categorys" style="align-items: center">-->
+<!--            <button pButton pRipple [label]="category.name" icon="pi pi-plus" class="p-button-rounded p-button-secondary" (click)="gitCategory(category.name)" ></button>-->
+<!--  </span>-->
+
 <!---->
 <p-table #dt [value]="product" [(selection)]="selectedProduct" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
          [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
@@ -116,7 +124,7 @@
         <!--        <p-progressBar [value]="product.activity" [showValue]="false"></p-progressBar>-->
       </td>
       <td style="text-align: center">
-        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(product)"></button>
+        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="updateDialog(product)"></button>
         <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
       </td>
     </tr>
@@ -127,7 +135,7 @@
     </tr>
   </ng-template>
 </p-table>
-
+</div>
 <!-- add New-->
 
 <p-dialog [(visible)]="productDialog" [style]="{width: '850px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
@@ -172,11 +180,11 @@
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputcategory">section</label>
+          <label for="inputcategory">Categorys</label>
           <p-dropdown name="category"  id="inputcategory"
                       ngModel [options]="categorys"   placeholder="Select a Status" >
             <ng-template let-option pTemplate="item" >
-              <span >{{option.label}}</span>
+              <span >{{option.name}}</span>
             </ng-template>
           </p-dropdown>
         </div>
@@ -204,7 +212,7 @@
 <!-- edit -->
 <p-dialog [(visible)]="editDialog" [style]="{width: '850px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content"   >
-    <form #f="ngForm" (ngSubmit)="addNewGood(f)"   >
+    <form #f="ngForm" (ngSubmit)="update(f)" index as i  >
       <div class="form-row" >
         <div class="form-group col-6">
           <label for="inputName4">Name</label>
@@ -278,3 +286,60 @@
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 <p-toast></p-toast>
+
+
+<!-- Add Category Dialog -->
+<p-dialog header="Add New Category" [(visible)]="AddCategorydisplay" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <form #f="ngForm" (ngSubmit)="AddNewCategory(f,$event.files)" index as i  >
+    <div class="form-row" >
+      <div class="form-group col-6">
+        <label for="inputName4">Name</label>
+        <input type="email" class="form-control" id="inputName4" placeholder="Name"
+               name="name" ngModel  required>
+      </div>
+      <div class="form-group col-6">
+          <label for="inputDiscription">discription</label>
+          <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
+                 name="discription" ngModel >
+      </div>
+    </div>
+
+    <div class="">
+        <p-fileUpload  [auto]="true"
+                      (onSelect)="onSelectImage($event.files)"
+                      accept="image/*" maxFileSize="1000000">
+          <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+              <li *ngFor="let file of uploadedFiles">{{file.name }}-{{file.size}} bytes</li>
+            </ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+    <p-footer style="margin-left: 75%">
+    <p-button icon="pi pi-check" type="submit" label="Yes" styleClass="p-button-text"  ></p-button>
+    <p-button icon="pi pi-times" (click)="AddCategorydisplay=false" label="No" styleClass="p-button-text"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+<!-- categorys -->
+<p-overlayPanel #op [showCloseIcon]="true"   [style]="{width: '450px'}">
+  <ng-template pTemplate>
+    <p-table [value]="Categorys" selectionMode="single" [(selection)]="selectedCategory" (onRowSelect)="onRowSelect($event)"  (click)="op.hide()" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+          <th>Image</th>
+<!--          <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>-->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-Categorys>
+        <tr [pSelectableRow]="rowData">
+          <td>{{Categorys.name}}</td>
+          <td><img [src]="Categorys.photoUrl" [alt]="Categorys.name" class="product-image" /></td>
+<!--          <td>{{product.price}}</td>-->
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-template>
+</p-overlayPanel>

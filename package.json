@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.2",
-    "@angular/cdk": "^10.2.4",
+    "@angular/cdk": "^10.2.5",
     "@angular/common": "~10.1.2",
     "@angular/compiler": "~10.1.2",
     "@angular/core": "~10.1.2",
@@ -32,7 +32,7 @@
     "core-js": "^2.6.5",
     "firebase": "^7.22.1",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.24.65",
+    "gatsby": "^2.24.80",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primeng": "^10.0.0",

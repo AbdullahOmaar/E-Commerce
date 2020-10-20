@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.as.userId +'ss')
-    this.gs.gitAllGoods().subscribe(
+    this.gs.mainslider().subscribe(
       data => {
        this.goods= data.map(element=> {
           return{
