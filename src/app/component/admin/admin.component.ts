@@ -234,6 +234,7 @@ export class AdminComponent implements OnInit {
     )
       .catch(res => console.log(res.message))
     this.productDialog = false;
+
   }
 
   // delete product

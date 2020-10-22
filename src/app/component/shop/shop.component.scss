@@ -4,6 +4,11 @@
     font-weight: normal;
   }
 
+  .container {
+    margin-top: 50px;
+  }
+
+
   .product-name {
     font-size: 1.5rem;
     font-weight: 700;
@@ -21,6 +26,10 @@
   .product-category {
     font-weight: 600;
     vertical-align: middle;
+  }
+
+  .fa-gratipay:hover{
+    color:blue !important;
   }
 
   .product-list-item {
@@ -60,24 +69,37 @@
       margin-bottom: .5rem;
     }
   }
-
+    .productCart{
+      background-color: #f2f2f6;
+    }
   .product-grid-item {
-    margin: .5em;
-    border: 1px solid #dee2e6;
+    //margin: .5em;
+    //border: 1px solid #dee2e6;
+    .product-grid-item-top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: .5em .9em 0em .5em ;
+    }
 
-    .product-grid-item-top,
     .product-grid-item-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin: 0em 1.5em 1em 1.5em ;
+    }
+    .inventoryStatus{
+      font-size: 15px;
     }
 
-    img {
-      width: 75%;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-      margin: 2rem 0;
-      height: 250px;
 
+    img {
+      width: 60%;
+      height: 150px;
+      //box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      //margin: 0rem ;
+      //margin-top: .5rem;
+      margin-bottom: 1rem;
     }
 
     .product-grid-item-content {
@@ -85,17 +107,28 @@
     }
 
     .product-price {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 600;
     }
+
   }
+
+}
+
+.card:hover{
+  //background-color:blue !important;
+  box-shadow:2px 3px 5px 10px rgba(0,0,0,0.20);
+  border:0;
 }
 
 .card {
-  padding: 2rem;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
+  //padding: 1rem;
+  //box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  //border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.15);
   margin-bottom: 2rem;
+  //background: #f2f2f6;
+  border-radius: 30px;
 }
 
 @media screen and (max-width: 576px) {
@@ -104,7 +137,7 @@
     align-items: center;
 
     img {
-      width: 75%;
+      width: 50px;
       margin: 2rem 0;
     }
 
@@ -130,3 +163,4 @@
     }
   }
 }
+

@@ -26,6 +26,7 @@ export interface Good {
   company?: string;
   date?: Date;
   status?: string;
+  discount?: number;
   representative?: Representative;
 }
 

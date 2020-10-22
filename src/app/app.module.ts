@@ -121,7 +121,8 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     ConfirmDialogModule,
     ReactiveFormsModule,
     FileUploadModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+
 
 
 

@@ -1,4 +1,7 @@
-<div class="card container">
+
+
+
+<div class=" container" >
   <p-dataView #dv [value]="products" [paginator]="true"
               [rows]="9" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
@@ -25,30 +28,35 @@
           <div class="product-list-action">
             <span class="product-price">${{product.price}}</span>
             <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-<!--            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
           </div>
         </div>
       </div>
     </ng-template>
-    <ng-template let-product pTemplate="gridItem">
-      <div class="p-col-12 p-md-4">
+    <ng-template let-product pTemplate="gridItem" >
+      <div class="p-col-12 p-md-3 productCart " data-aos="zoom-in"
+                                   data-aos-easing="linear"
+                                   data-aos-duration="600">
         <div class="product-grid-item card">
           <div class="product-grid-item-top">
-            <div>
-              <i class="pi pi-tag product-category-icon"></i>
-              <span class="product-category">{{product.category}}</span>
+            <div class="inventoryStatus">
+              <span class="badge badge-pill badge-primary">{{product.status}}</span>
+              <span class="badge badge-pill badge-danger m-1" *ngIf="product.discount">-{{product.discount}}%</span>
+              <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
             </div>
-<!--            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+            <span class="product-ategory  "><i class="fa fa-gratipay fa-2x"></i></span>
           </div>
+          <div class="col-md-12"><span class="pull-right"><i class="fa fa-shopping-basket fa-lg"></i></span></div>
+
           <div class="product-grid-item-content">
-            <img [src]="'' + product.photoUrl" [alt]="product.name"/>
+            <img [src]="'' + product.photoUrl" [alt]="product.name" />
             <div class="product-name">{{product.name}}</div>
             <div class="product-description">{{product.description}}</div>
-            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
           </div>
           <div class="product-grid-item-bottom">
             <span class="product-price">${{product.price}}</span>
-            <p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+            <p-rating [ngModel]="product.rating"  [cancel]="false"></p-rating>
+            <!--<p-button icon="pi pi-shopping-cart" ></p-button>-->
           </div>
         </div>
 

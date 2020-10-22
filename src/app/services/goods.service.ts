@@ -8,10 +8,13 @@ import {rejects} from 'assert';
 })
 export class GoodsService {
 
+   // status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
+
+
   constructor(private fs: AngularFirestore, private storage: AngularFireStorage) { }
 
   gitAllGoods() {
-    return this.fs.collection(`goods`).snapshotChanges()
+    return this.fs.collection(`goods/Men's Fashion/item`).snapshotChanges()
   }
 
   mainslider() {
