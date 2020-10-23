@@ -1,17 +1,14 @@
-
-
-
-<div class=" container" >
+<div class="container">
   <p-dataView #dv [value]="products" [paginator]="true"
               [rows]="9" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
     <ng-template pTemplate="header">
-      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
-        <p-dropdown [options]="sortOptions"   placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between header">
+        <p-dropdown class="dropdown" [options]="sortOptions"   placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
         <span class="p-input-icon-left p-mb-2 p-mb-md-0">
                     <i class="pi pi-search"></i>
-                    <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
-                </span>
+                    <input class="search" type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+        </span>
         <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
       </div>
     </ng-template>
@@ -34,10 +31,10 @@
       </div>
     </ng-template>
     <ng-template let-product pTemplate="gridItem" >
-      <div class="p-col-12 p-md-3 productCart " data-aos="zoom-in"
-                                   data-aos-easing="linear"
-                                   data-aos-duration="600">
-        <div class="product-grid-item card">
+      <div class="p-col-12 p-md-3 productCart "  data-aos="zoom-in"
+                                                 data-aos-easing="linear"
+                                                 data-aos-duration="600">
+        <div class="product-grid-item card" >
           <div class="product-grid-item-top">
             <div class="inventoryStatus">
               <span class="badge badge-pill badge-primary">{{product.status}}</span>
@@ -46,8 +43,7 @@
             </div>
             <span class="product-ategory  "><i class="fa fa-gratipay fa-2x"></i></span>
           </div>
-          <div class="col-md-12"><span class="pull-right"><i class="fa fa-shopping-basket fa-lg"></i></span></div>
-
+          <div  class="col-md-12"><span class="pull-right"><i class="fa fa-shopping-basket fa-lg"></i></span></div>
           <div class="product-grid-item-content">
             <img [src]="'' + product.photoUrl" [alt]="product.name" />
             <div class="product-name">{{product.name}}</div>
@@ -64,3 +60,16 @@
     </ng-template>
   </p-dataView>
 </div>
+
+
+<!--fliter-->
+    <div class="container parent4"  >
+      <div class=" ">
+        <i class="fa fa-filter fa-3x" (click)="op.toggle($event)"></i>
+        </div>
+    </div>
+<p-overlayPanel [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" #op [dismissable]="true" [showCloseIcon]="true">
+  <ng-template pTemplate>
+    <app-fliter></app-fliter>
+  </ng-template>
+</p-overlayPanel>

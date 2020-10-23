@@ -51,7 +51,9 @@ import {FocusTrapModule} from 'primeng/focustrap';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {FileUploadModule} from 'primeng/fileupload';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { OverlayPanelModule} from 'primeng/overlaypanel';
+import { FliterComponent } from './component/fliter/fliter.component';
+import {PanelMenuModule} from 'primeng/panelmenu';
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     CategoriesComponent,
     CardComponent,
     ShopComponent,
+    FliterComponent,
 
 
   ],
@@ -122,12 +125,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     ReactiveFormsModule,
     FileUploadModule,
     OverlayPanelModule,
-
-
-
-
-
-
+    PanelMenuModule,
 
 
 

@@ -2,6 +2,8 @@
   .p-dropdown {
     width: 14rem;
     font-weight: normal;
+    border-radius: 30px;
+    box-shadow:0 11px 15px 0 rgba(0, 0, 0, 0.1), 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.07);
   }
 
   .container {
@@ -115,6 +117,19 @@
 
 }
 
+
+.search{
+  box-shadow:0 11px 15px 0 rgba(0, 0, 0, 0.1), 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.07);
+  border:1.5px solid rgba(0, 0, 0, .12);
+  border-radius: 30px;
+  width: 80%;
+}
+
+.search:hover{
+  box-shadow:2px 3px 5px 10px rgba(0,0,0,0.20);
+  //border:0;
+}
+
 .card:hover{
   //background-color:blue !important;
   box-shadow:2px 3px 5px 10px rgba(0,0,0,0.20);
@@ -164,3 +179,14 @@
   }
 }
 
+
+.parent4 {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.fa-filter{
+  color: #3b5998;
+}
