@@ -52,8 +52,9 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {FileUploadModule} from 'primeng/fileupload';
 import { OverlayPanelModule} from 'primeng/overlaypanel';
-import { FliterComponent } from './component/fliter/fliter.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import { FilterComponent } from './component/filter/filter.component';
+import {ToggleButtonModule} from "primeng/togglebutton";
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     CategoriesComponent,
     CardComponent,
     ShopComponent,
-    FliterComponent,
+    FilterComponent,
 
 
   ],
@@ -126,7 +127,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     FileUploadModule,
     OverlayPanelModule,
     PanelMenuModule,
-
+    ToggleButtonModule,
 
 
 

@@ -1,36 +1,177 @@
-<p-menubar [model]="items">
-  <div>
-    <div class="p-grid">
-      <div class="p-col" >
-        <p-button label="filter"  routerLink="/filter"></p-button>
+<!--<p-menubar [model]="items">-->
+<!--  <div>-->
+<!--    <div class="p-grid">-->
+<!--      <div class="p-col" >-->
+<!--        <p-button label="filter"  routerLink="/filter"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" >-->
+<!--        <p-button label="Shop"  routerLink="/shop"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="isUser">-->
+<!--        <p-button label="admin"  routerLink="/admin"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" >-->
+<!--        <p-button label="Home"  routerLink="/"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" >-->
+<!--        <input  type="text" pInputText placeholder="Search" class="Search" >-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="isUser">-->
+<!--        <p-button label="cart"  routerLink="/cart"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="isUser">-->
+<!--        <p-button label="Messages" icon="pi pi-users" styleClass="p-button-warning" badge="8" badgeClass="p-badge-danger"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="!isUser">-->
+<!--        <p-button label="signup" routerLink="/signup"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="!isUser">-->
+<!--        <p-button label="login"  routerLink="/login"></p-button>-->
+<!--      </div>-->
+<!--      <div class="p-col" *ngIf="isUser">-->
+<!--        <p-button label="logout"  routerLink="/login" (click)="logout()"></p-button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</p-menubar>-->
+
+<!---->
+<!---->
+<nav class="navbar  navbar-expand-md  justify-content-md-center justify-content-start parent1" style="height: 70px; color: #9292d2;   border-bottom:1.5px solid rgba(0, 0, 0, .12);" >
+  <a class="navbar-brand d-md-none d-inline" href="">E-Commarce</a>
+  <p-toggleButton class="navbar-brand d-md-none d-inline" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>
+
+  <a class=" navbar-brand d-none d-lg-block" href="">E-Commarce</a>
+  <p-toggleButton class="navbar-brand d-none d-lg-block toButton" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>
+
+  <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+    <ul class="navbar-nav mx-auto text-md-center text-left">
+        <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                    <i class="pi pi-search"></i>
+                    <input class="search" type="search" pInputText placeholder="Search by Name" >
+        </span>
+    </ul>
+    <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
+      <div style="margin-top: 12px">
+      <span class="p-overlay-badge p-mr-5">
+          <i class="pi pi-heart" style="font-size: 1.5em"></i>
+          <span class="p-badge">2</span>
+      </span>
+      <span class="p-overlay-badge p-mr-5">
+          <i class="pi pi-shopping-cart" style="font-size: 1.5em"></i>
+          <span class="p-badge">2</span>
+      </span>
       </div>
-      <div class="p-col" >
-        <p-button label="Shop"  routerLink="/shop"></p-button>
-      </div>
-      <div class="p-col" *ngIf="isUser">
-        <p-button label="admin"  routerLink="/admin"></p-button>
-      </div>
-      <div class="p-col" >
-        <p-button label="Home"  routerLink="/"></p-button>
-      </div>
-      <div class="p-col" >
-        <input  type="text" pInputText placeholder="Search" class="Search" >
-      </div>
-      <div class="p-col" *ngIf="isUser">
-        <p-button label="cart"  routerLink="/cart"></p-button>
-      </div>
-      <div class="p-col" *ngIf="isUser">
-        <p-button label="Messages" icon="pi pi-users" styleClass="p-button-warning" badge="8" badgeClass="p-badge-danger"></p-button>
-      </div>
-      <div class="p-col" *ngIf="!isUser">
-        <p-button label="signup" routerLink="/signup"></p-button>
-      </div>
-      <div class="p-col" *ngIf="!isUser">
-        <p-button label="login"  routerLink="/login"></p-button>
-      </div>
-      <div class="p-col" *ngIf="isUser">
-        <p-button label="logout"  routerLink="/login" (click)="logout()"></p-button>
-      </div>
-    </div>
+      <li class="nav-item" *ngIf="!isUser"
+      ><a class="nav-link" href="" routerLink="/login"><i class="fa fa-sign-in" style="font-size: 30px;"> </i></a>
+      </li>
+      <li class="nav-item" *ngIf="isUser">
+        <a class="nav-link" href="" routerLink="/login" (click)="logout()"><i class="fa fa-sign-out " style="font-size: 30px;"></i></a>
+      </li>
+    </ul>
   </div>
-</p-menubar>
+</nav>
+
+<!---->
+<!---->
+
+
+<div class="area"></div>
+<nav class="main-menu parent4 " *ngIf="showMainMenu">
+  <ul>
+    <li>
+      <a href="#" routerLink="/shop">
+        <i class="fa fa-male fa-2x"></i>
+        <span class="nav-text">
+            Men's Fashion
+
+          </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a href="#" routerLink="/shop">
+        <i class="fa fa-female fa-2x"></i>
+        <span class="nav-text">
+            Women's Fashion
+          </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a href="#" routerLink="/shop">
+        <i class="fa fa-child fa-2x"></i>
+        <span class="nav-text">
+            Kid's Fashion
+
+          </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a href="#" routerLink="/shop">
+        <i class="fa fa-bicycle fa-2x"></i>
+        <span class="nav-text">
+            Sports & Fitness
+
+          </span>
+      </a>
+
+    </li>
+    <li>
+      <a href="#" routerLink="/shop">
+        <i class="fa fa-shopping-bag fa-2x"></i>
+        <span class="nav-text">
+            Bags
+          </span>
+      </a>
+    </li>
+    <li>
+      <a href="#"   routerLink="/cart">
+        <i class="fa fa-heart fa-2x"></i>
+        <span class="nav-text">
+            Wishlist
+          </span>
+      </a>
+    </li>
+    <li>
+      <a href="#"  routerLink="/cart">
+        <i class="fa fa-cart-arrow-down fa-2x"></i>
+        <span class="nav-text">
+            My Orders
+          </span>
+      </a>
+    </li>
+    <li>
+      <a href="#" routerLink="/admin">
+        <i class="fa fa-user-circle fa-2x"></i>
+        <span class="nav-text">
+            User
+          </span>
+      </a>
+    </li>
+    <li>
+      <a href="#"  routerLink="/admin">
+        <i class="fa fa-dashboard fa-2x"></i>
+        <span class="nav-text">
+             Dashboard
+          </span>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="logout">
+    <li>
+      <a href="#" routerLink="/login" (click)="logout()">
+        <i class="fa fa-power-off fa-2x"></i>
+        <span class="nav-text">
+            Logout
+          </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+

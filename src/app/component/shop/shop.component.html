@@ -1,4 +1,10 @@
-<div class="container">
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+<div class="shop  container">
   <p-dataView #dv [value]="products" [paginator]="true"
               [rows]="9" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
@@ -60,7 +66,7 @@
     </ng-template>
   </p-dataView>
 </div>
-
+</div>
 
 <!--fliter-->
     <div class="container parent4"  >
@@ -70,6 +76,6 @@
     </div>
 <p-overlayPanel [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" #op [dismissable]="true" [showCloseIcon]="true">
   <ng-template pTemplate>
-    <app-fliter></app-fliter>
+    <app-filter></app-filter>
   </ng-template>
 </p-overlayPanel>

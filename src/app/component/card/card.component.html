@@ -1,12 +1,29 @@
-<div class="container">
-<div class="cards-list ">
-  <div class="card " *ngFor="let goods of goods">
-    <div class="card_image ">
-      <img  [src]="goods.photoUrl" alt="Card image cap">
+<div class="row">
+<div class="p-col-12 p-md-3 productCart "   *ngFor="let product of products"
+                           data-aos="zoom-in"
+                           data-aos-easing="linear"
+                           data-aos-duration="600">
+  <div class="product-grid-item card" >
+    <div class="product-grid-item-top">
+      <div class="inventoryStatus">
+        <span class="badge badge-pill badge-primary">{{product.status}}</span>
+        <span class="badge badge-pill badge-danger m-1" *ngIf="product.discount">-{{product.discount}}%</span>
+        <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+      </div>
+      <span class="product-ategory  "><i class="fa fa-gratipay fa-2x"></i></span>
     </div>
-    <div class="card_title title-white">
-      <p>Card Title</p>
+    <div  class="col-md-12"><span class="pull-right"><i class="fa fa-shopping-basket fa-lg"></i></span></div>
+    <div class="product-grid-item-content">
+      <img [src]="'' + product.photoUrl" [alt]="product.name" />
+      <div class="product-name">{{product.name}}</div>
+      <div class="product-description">{{product.description}}</div>
+    </div>
+    <div class="product-grid-item-bottom">
+      <span class="product-price">${{product.price}}</span>
+      <p-rating [ngModel]="product.rating"  [cancel]="false"></p-rating>
+      <!--<p-button icon="pi pi-shopping-cart" ></p-button>-->
     </div>
   </div>
+
 </div>
 </div>

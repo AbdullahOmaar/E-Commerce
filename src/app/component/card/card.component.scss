@@ -1,87 +1,192 @@
- .container{
-   align-items: center;
+:host ::ng-deep {
+  .p-dropdown {
+    width: 14rem;
+    font-weight: normal;
+    border-radius: 30px;
+    box-shadow:0 11px 15px 0 rgba(0, 0, 0, 0.1), 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.07);
+  }
 
- }
-.cards-list {
-  z-index: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  .container {
+    margin-top: 50px;
+  }
+
+
+  .product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .product-description {
+    margin: 0 0 1rem 0;
+  }
+
+  .product-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+  }
+
+  .product-category {
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .fa-gratipay:hover{
+    color:blue !important;
+  }
+
+  .product-list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    img {
+      width: 150px;
+      max-height: 150px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      margin-right: 2rem;
+    }
+
+    .product-list-detail {
+      flex: 1 1 0;
+    }
+
+    .p-rating {
+      margin: 0 0 .5rem 0;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+      align-self: flex-end;
+    }
+
+    .product-list-action {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p-button {
+      margin-bottom: .5rem;
+    }
+  }
+  .productCart{
+    background-color: #f2f2f6;
+  }
+  .product-grid-item {
+    //margin: .5em;
+    //border: 1px solid #dee2e6;
+    .product-grid-item-top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: .5em .9em 0em .5em ;
+    }
+
+    .product-grid-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0em 1.5em 1em 1.5em ;
+    }
+    .inventoryStatus{
+      font-size: 15px;
+    }
+
+
+    img {
+      width: 60%;
+      height: 150px;
+      //box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      //margin: 0rem ;
+      //margin-top: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-grid-item-content {
+      text-align: center;
+    }
+
+    .product-price {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+  }
 
 }
-.Card image cap{
-  align-items: center;
 
+
+.search{
+  box-shadow:0 11px 15px 0 rgba(0, 0, 0, 0.1), 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.07);
+  border:1.5px solid rgba(0, 0, 0, .12);
+  border-radius: 30px;
+  width: 80%;
+}
+
+.search:hover{
+  box-shadow:2px 3px 5px 10px rgba(0,0,0,0.20);
+  //border:0;
+}
+
+.card:hover{
+  //background-color:blue !important;
+  box-shadow:2px 3px 5px 10px rgba(0,0,0,0.20);
+  border:0;
 }
 
 .card {
-  margin: 30px auto;
-  width: 300px;
-  height: 300px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  transition: 0.4s;
-
+  //padding: 1rem;
+  //box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  //border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
+  //background: #f2f2f6;
+  border-radius: 30px;
 }
 
-.card .card_image {
-  width: inherit;
-  height: inherit;
-
-}
-
-.card .card_image img {
-  width: 260px;
-  height: 260px;
-  margin: 1.5vh;
-}
-
-.card .card_title {
-  text-align: center;
-  border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: -80px;
-  height: 40px;
-}
-
-.card:hover {
-  transform: scale(0.9, 0.9);
-  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
-  -5px -5px 30px 15px rgba(0,0,0,0.22);
-}
-
-.title-white {
-  color: white;
-}
-
-.title-black {
-  color: black;
-}
-
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
+@media screen and (max-width: 576px) {
+  :host ::ng-deep .product-list-item {
     flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 50px;
+      margin: 2rem 0;
+    }
+
+    .product-list-detail {
+      text-align: center;
+    }
+
+    .product-price {
+      align-self: center;
+    }
+
+    .product-list-action {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-list-action {
+      margin-top: 2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
   }
 }
 
 
-/*
-.card {
-  margin: 30px auto;
-  width: 300px;
-  height: 300px;
-  border-radius: 40px;
-  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-repeat: no-repeat;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  transition: 0.4s;
+.parent4 {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }
-*/
+
+.fa-filter{
+  color: #3b5998;
+}

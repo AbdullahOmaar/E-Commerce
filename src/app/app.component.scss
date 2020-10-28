@@ -1,0 +1,10 @@
+.parent1 {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  background-color: #f2f2f6 !important;
+}
+ body{
+   position: absolute;
+   z-index: 5;
+ }
