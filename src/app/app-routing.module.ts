@@ -7,6 +7,7 @@ import {SignupComponent} from './component/signup/signup.component';
 import {CartComponent} from './component/cart/cart.component';
 import {ShopComponent} from './component/shop/shop.component';
 import {FilterComponent} from "./component/filter/filter.component";
+import {GoodComponent} from "./component/good/good.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'cart' , component: CartComponent },
   { path: 'shop' , component: ShopComponent},
   { path: 'filter' , component: FilterComponent},
+  { path: 'good' , component: GoodComponent},
   { path: '**' , component: HomeComponent }
 ];
 

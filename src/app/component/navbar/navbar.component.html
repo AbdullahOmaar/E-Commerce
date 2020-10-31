@@ -52,15 +52,19 @@
         </span>
     </ul>
     <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
-      <div style="margin-top: 12px">
+      <div style="margin-top: 14px">
       <span class="p-overlay-badge p-mr-5">
-          <i class="pi pi-heart" style="font-size: 1.5em"></i>
+          <a class="pi pi-heart" style="font-size: 1.8em" routerLink="/cart"></a>
           <span class="p-badge">2</span>
       </span>
-      <span class="p-overlay-badge p-mr-5">
-          <i class="pi pi-shopping-cart" style="font-size: 1.5em"></i>
+        <span class="p-overlay-badge p-mr-5">
+          <a class="pi pi-shopping-cart" style="font-size: 1.8em" routerLink="/cart"></a>
           <span class="p-badge">2</span>
       </span>
+<!--        <span class="p-overlay-badge p-mr-5">-->
+<!--          <i class="pi pi-shopping-cart" style="font-size: 1.5em"></i>-->
+<!--          <span class="p-badge">2</span>-->
+<!--      </span>-->
       </div>
       <li class="nav-item" *ngIf="!isUser"
       ><a class="nav-link" href="" routerLink="/login"><i class="fa fa-sign-in" style="font-size: 30px;"> </i></a>
@@ -158,20 +162,14 @@
           </span>
       </a>
     </li>
-  </ul>
-
-  <ul class="logout">
     <li>
-      <a href="#" routerLink="/login" (click)="logout()">
-        <i class="fa fa-power-off fa-2x"></i>
+      <a href="#"  routerLink="/login" (click)="logout()">
+        <i class="fa fa-sign-out fa-2x"></i>
         <span class="nav-text">
-            Logout
+             Sign Out
           </span>
       </a>
     </li>
   </ul>
+
 </nav>
-
-
-
-

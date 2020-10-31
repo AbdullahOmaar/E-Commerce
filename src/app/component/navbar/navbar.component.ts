@@ -1,6 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, OnInit,HostListener, Input, ViewChild } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {AuthService} from '../../services/auth.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -27,14 +28,18 @@ export class NavbarComponent implements OnInit {
   constructor(private as: AuthService) { }
 
 
-  ngOnInit() {
+  ngOnInit() : void{
     this.as.user.subscribe(user => {
         if (user) {
           this.isUser = true
           this.as.userId = user.uid
+          localStorage.setItem('user' , JSON.stringify(this.as.userId))
+
         } else {
           this.isUser = false
           this.as.userId = ''
+          localStorage.removeItem('user')
+
         }
       }
     )
@@ -43,24 +48,20 @@ export class NavbarComponent implements OnInit {
 
     this.screenHeight = window.innerHeight;
 
-    if (this.screenWidth <= 360) {
-      this.showMainMenu = false
-    }
+    this.showMainMenu = false
+
   }
 
   @HostListener('window:resize', ['$event'])
 
   onResize(event) {
-
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 360){
       this.screenMop = true
       this.showMainMenu = false
-
     }else {
       this.screenMop = false
       this.showMainMenu = true
-
     }
   }
 

@@ -34,6 +34,7 @@
     "firebase": "^7.22.1",
     "font-awesome": "^4.7.0",
     "gatsby": "^2.24.80",
+    "jquery": "^3.5.1",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primeng": "^10.0.0",

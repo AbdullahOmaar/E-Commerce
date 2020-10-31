@@ -44,12 +44,15 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   buy(amount: number){
   let selectedGood =this.goods[this.add]
     let data = {
-    name: selectedGood.name,
-    amount: +amount,
-    price: selectedGood.price
+      // id: selectedGood.id,
+      name: selectedGood.name,
+      photoUrl: selectedGood.photoUrl,
+      amount: +amount,
+      price: selectedGood.price
     }
     this.cs.addToCart(data).then(()=> this.add = -1 )
   }

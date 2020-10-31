@@ -13,7 +13,6 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AdminComponent } from './component/admin/admin.component';
 
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';                  //api
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
@@ -55,6 +54,9 @@ import { OverlayPanelModule} from 'primeng/overlaypanel';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { FilterComponent } from './component/filter/filter.component';
 import {ToggleButtonModule} from "primeng/togglebutton";
+import {NavbarComponent} from "./component/navbar/navbar.component";
+import { GoodComponent } from './component/good/good.component';
+import {OrderListModule} from "primeng/orderlist";
 
 
 @NgModule({
@@ -65,13 +67,15 @@ import {ToggleButtonModule} from "primeng/togglebutton";
     LoginComponent,
     NotFoundComponent,
     AdminComponent,
-    NavbarComponent,
     FooterComponent,
     SignupComponent,
     CategoriesComponent,
     CardComponent,
     ShopComponent,
     FilterComponent,
+    NavbarComponent,
+    GoodComponent,
+
 
 
   ],
@@ -128,7 +132,7 @@ import {ToggleButtonModule} from "primeng/togglebutton";
     OverlayPanelModule,
     PanelMenuModule,
     ToggleButtonModule,
-
+    OrderListModule
 
 
   ],

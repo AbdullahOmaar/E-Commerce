@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {rejects} from 'assert';
+import {Observable, of} from "rxjs";
+import {Good} from "../interface/good";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,15 @@ export class GoodsService {
   deleteitem(category, id){
     return this.fs.doc(`goods/${category}/item/${id}`).delete()
   }
+  // share data for cart item
+    add : any
+  setData(data){
+    this.add = data
+  }
+  getData(){
+    return this.add
+  }
+  // End //
 
   addNewGood(name: string, price: number,discription: string, image: File, country: any, status: string, date: Date, category: string ){
     return new Promise((resolve, reject) => {

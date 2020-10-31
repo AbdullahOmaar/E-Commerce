@@ -12,6 +12,8 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth) {
     this.user = afAuth.user
+    this.userId = JSON.parse(localStorage.getItem('user')) ;
+    this.user = afAuth.user
   }
 
   signup(email, password){
@@ -24,5 +26,7 @@ export class AuthService {
 
   logout(){
     return this.afAuth.auth.signOut()
+    localStorage.setItem('dataSource','');
+
   }
 }
