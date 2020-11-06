@@ -5,6 +5,14 @@
   color:black;
 }
 
+.fa-cart-arrow-down{
+  color:blue;
+}
+.fa-cart-arrow-down:hover{
+  color:black;
+}
+
+
 #number {
   width: 3em;
   box-shadow:inset 0 0 10px 0 rgba(95, 71, 71, 0.35);
@@ -50,8 +58,8 @@
 
 
 .product-item {
-    box-shadow:0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
-    border:0;
+  box-shadow:0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
+  border:0;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -81,6 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin: 30px;
   }
 
   .product-category-icon {

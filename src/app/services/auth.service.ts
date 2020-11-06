@@ -13,7 +13,19 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {
     this.user = afAuth.user
     this.userId = JSON.parse(localStorage.getItem('user')) ;
-    this.user = afAuth.user
+  }
+
+  ngOnInit(){
+    this.user.subscribe(user => {
+        if (user) {
+          this.userId = user.uid
+          localStorage.setItem('user' , JSON.stringify(this.userId))
+        } else {
+          this.userId = ''
+          localStorage.removeItem('user')
+        }
+      }
+    )
   }
 
   signup(email, password){

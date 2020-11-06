@@ -1,68 +1,84 @@
 <br><br><br>
-<div class="container">
-  <table class="table">
 
-    <tbody >
-    <tr *ngFor="let good of cart; index as i" >
-      <th class=" goodsImg" >
-<!--        <img class="card-img-top" [src]="good.photoUrl" alt="Card image cap">-->
-      </th>
-      <th scope="row">{{good.name}}</th>
-      <td>{{good.price | currency}}</td>
-      <td>
-        <input type="number" placeholder="Amount" [(ngModel)]="good.amount">
-      </td>
-      <td>{{good.price * good.amount}}</td>
-      <td>
-        <button class="btn btn-primary" (click)="update(i)">save</button>
-        <button class="btn-danger" (click)="delete(i)">delete</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<br>
+<div class="container headar ">
+  <h1>
+    Shopping Cart
+  </h1>
+  <div>
+    <a href="#" routerLink="/home"> Home </a>   <a> > </a>    <a> Shopping Cart </a>
+  </div>
 </div>
+<br>
+<br>
+<div class=" container  ">
+<div class="row justify-content-md-center" >
+  <div class="col-sm-8" >
+    <div class="col-sm-12  justify-content-md-center product-item" >Cart Items</div>
+        <div *ngFor="let product of cart; index as i" >
+          <div class="product-item" data-aos="fade-up"
+                                     data-aos-duration="1500">
+            <div class="image-container" >
+              <img [src]="product.photoUrl" [alt]="product.name" class="product-image" />
+            </div>
+            <div class="product-list-detail" >
+              <h3 class="p-mb-2" ><a href="#"  routerLink="/good" (click)="setData(product)" >{{product.name}}</a> </h3>
+            </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="justify-content-center container  ">
-<div class="row no-gutters  " >
-  <div class="col-sm-6 col-md-8 " >
-    <p-orderList [value]="cart" [listStyle]="{'height':'auto'}" header="List of Cart Products" filterBy="name,price" filterPlaceholder="Filter by name,price" controlsPosition="hidden" dragdrop="true">
-      <ng-template let-cart pTemplate="item">
-        <div class="product-item">
-          <div class="image-container">
-            <img [src]="cart.photoUrl" [alt]="cart.name" class="product-image" />
+            <div class="product-list-amount justify-content-around" >
+              <span class="">{{product.price | currency}}</span>
+              <input type="number" [(ngModel)]="product.amount" id="number">
+              <span class="">{{product.price * product.amount | currency }}</span>
+            </div>
+
+
+            <div class="product-list-action">
+<!--            <button class="btn btn-primary" (click)="update(i)">save</button>-->
+            </div>
+            <span class="fa fa fa-trash fa-2x" (click)="delete(i)"></span>
           </div>
-          <div class="product-list-detail">
-            <h5 class="p-mb-2">{{cart.name}}</h5>
-            <i class="pi pi-tag product-category-icon"></i>
-            <span class="product-category">{{cart.category}}</span>
-          </div>
-          <div class="product-list-action">
-            <h6 class="p-mb-2">${{cart.price}}</h6>
-<!--            <span [class]="'product-badge status-' + cart.inventoryStatus.toLowerCase()">{{cart.inventoryStatus}}</span>-->
-          </div>
-        </div>
-      </ng-template>
-    </p-orderList>
+
+      </div>
+    <div class="col-sm-12  justify-content-md-center product-item" >
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{  cart.length }} products.
+      </div>
+    </div>
+
   </div>
 
 
 <!--  -->
-  <div class="col-4 col-md-4 ">
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem ;min-width: 18rem; margin-left: 30px" >
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Primary card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="col-sm-4">
+    <div class="" style="max-width: 18rem ;min-width: 18rem; margin-left: 30px" >
+      <div class="card Summary">
+        <div class="card-header">
+          Summary
+        </div>
+        <div class="card-body">
+          <table width="100%">
+            <tr>
+              <th>Subtotal:	</th>
+              <td>{{cart.length | currency}}</td>
+            </tr>
+            <tr>
+              <th>Shipping:	</th>
+              <td>{{Shipping | currency}}</td>
+            </tr>
+            <tr>
+              <th>Total:	</th>
+              <td>{{cart.length | currency}}</td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" class="creditCard justify-content-md-center">credit card</a>
       </div>
-    </div>
   </div>
 </div>
 </div>
-  <br>
+</div>
+
+
+<br>
 <br>
 

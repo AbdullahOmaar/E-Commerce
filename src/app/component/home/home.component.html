@@ -63,19 +63,19 @@
 <!--end New Arrivals-->
 
 
-<div class="container">
-  <div class="row">
-    <div class="card" style="width: 18rem;"  *ngFor="let goods of goods; index as i">
-      <img class="card-img-top" [src]="goods.photoUrl" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{goods.name}}</h5>
-        <p class="card-text">{{goods.price}}</p>
-        <a class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Go somewhere</a>
-        <div *ngIf="add === i">
-          <input type="number" class="form-control" placeholder="amount(num)" #amount>
-          <button class="btn btn-primary" (click)="buy(amount.value)">buy</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="card" style="width: 18rem;"  *ngFor="let goods of goods; index as i">-->
+<!--      <img class="card-img-top" [src]="goods.photoUrl" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">{{goods.name}}</h5>-->
+<!--        <p class="card-text">{{goods.price}}</p>-->
+<!--        <a class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Go somewhere</a>-->
+<!--        <div *ngIf="add === i">-->
+<!--          <input type="number" class="form-control" placeholder="amount(num)" #amount>-->
+<!--          <button class="btn btn-primary" (click)="buy(amount.value)">buy</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

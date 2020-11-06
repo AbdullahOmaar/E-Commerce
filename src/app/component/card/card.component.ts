@@ -4,6 +4,7 @@ import {GoodsService} from '../../services/goods.service';
 import {Router} from "@angular/router";
 import {CartService} from "../../services/cart.service";
 import {AuthService} from "../../services/auth.service";
+import {WishlistService} from "../../services/wishlist.service";
 
 @Component({
   selector: 'app-card',
@@ -16,7 +17,8 @@ export class CardComponent implements OnInit {
   constructor(private gs: GoodsService,
               private cs: CartService,
               private as: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private wl: WishlistService) { }
 
   myproduct: any
 
@@ -50,14 +52,27 @@ export class CardComponent implements OnInit {
 
 
   addCart(cart){
-    console.log(cart,'ssssssssssssssssss')
-      let cartData = {
-        DataId: cart.id,
-        name: cart.name,
-        photoUrl: cart.photoUrl,
-        amount: 1,
-        price: cart.price
-      }
-    this.cs.addToCart(cartData).then()
+    console.log(cart,)
+    let cartData = {
+      DataId: cart.id,
+      name: cart.name,
+      photoUrl: cart.photoUrl,
+      amount: 1,
+      price: cart.price,
+      description: cart.discription,
+    }
+    this.cs.addToCart(cartData).then(res => { console.log(res)})
+  }
+
+  addWishlist(cart){
+    console.log(cart,)
+    let wishlistData = {
+      DataId: cart.id,
+      name: cart.name,
+      photoUrl: cart.photoUrl,
+      price: cart.price,
+      description: cart.discription,
+    }
+    this.wl.addToWishlist(wishlistData).then(res => { console.log(res)})
   }
 }

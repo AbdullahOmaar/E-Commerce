@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.as.userId +'ss')
     this.gs.mainslider().subscribe(
       data => {
        this.goods= data.map(element=> {

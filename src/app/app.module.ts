@@ -57,6 +57,8 @@ import {ToggleButtonModule} from "primeng/togglebutton";
 import {NavbarComponent} from "./component/navbar/navbar.component";
 import { GoodComponent } from './component/good/good.component';
 import {OrderListModule} from "primeng/orderlist";
+import {InputNumberModule} from "primeng/inputnumber";
+import { WishlistComponent } from './component/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -75,6 +77,7 @@ import {OrderListModule} from "primeng/orderlist";
     FilterComponent,
     NavbarComponent,
     GoodComponent,
+    WishlistComponent,
 
 
 
@@ -132,7 +135,8 @@ import {OrderListModule} from "primeng/orderlist";
     OverlayPanelModule,
     PanelMenuModule,
     ToggleButtonModule,
-    OrderListModule
+    OrderListModule,
+    InputNumberModule
 
 
   ],

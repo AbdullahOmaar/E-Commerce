@@ -4,6 +4,7 @@ import {CartService} from '../../services/cart.service';
 import {GoodsService} from '../../services/goods.service';
 import {AuthService} from '../../services/auth.service';
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,13 @@ import {Router} from "@angular/router";
 export class CartComponent implements OnInit {
 
   cart: Good[] = []
-  // goods: Good[] = []
+
+  lengthItem : number
+
+  Subtotal: any
+
+  Shipping: number = 30
+
 
   constructor(private cs: CartService,
               private as: AuthService,
@@ -24,13 +31,6 @@ export class CartComponent implements OnInit {
 
 
 ngOnInit(): void {
-    this.as.user.subscribe(user => {
-      if (user){
-        this.as.userId= user.uid
-      }
-      this.as.userId= ''
-    })
-    console.log( this.as.userId)
 
     this.cs.getCart().subscribe(cart => {
       this.cart = cart.map(shopping =>{
@@ -43,6 +43,9 @@ ngOnInit(): void {
   }
 
 
+
+
+
   delete(index) {
     return this.cs.delete(this.cart[index].id)
     console.log(this.cart[index].id,'ss')
@@ -52,6 +55,14 @@ ngOnInit(): void {
   update(index) {
     return this.cs.update(this.cart[index].id, this.cart[index].amount)
     console.log(this.cart[index].id)
+  }
+
+
+  myproduct: any
+  setData(product) {
+    this.myproduct = product
+    this.gs.setData(this.myproduct);
+    this.router.navigate(['good'])
   }
 }
 

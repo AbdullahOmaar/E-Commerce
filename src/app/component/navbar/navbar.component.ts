@@ -1,6 +1,9 @@
 import { Component, OnInit,HostListener, Input, ViewChild } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {AuthService} from '../../services/auth.service';
+import {GoodsService} from "../../services/goods.service";
+import {WishlistService} from "../../services/wishlist.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-navbar',
@@ -22,10 +25,14 @@ export class NavbarComponent implements OnInit {
 
   screenMop : boolean = false;
 
-  showMainMenu : boolean = true;
+  showMainMenu : boolean = false;
 
+  wishlist : any
 
-  constructor(private as: AuthService) { }
+  cart : any
+  constructor(private as: AuthService,
+              private wl: WishlistService,
+              private cs: CartService,) { }
 
 
   ngOnInit() : void{
@@ -34,7 +41,6 @@ export class NavbarComponent implements OnInit {
           this.isUser = true
           this.as.userId = user.uid
           localStorage.setItem('user' , JSON.stringify(this.as.userId))
-
         } else {
           this.isUser = false
           this.as.userId = ''
@@ -43,27 +49,45 @@ export class NavbarComponent implements OnInit {
         }
       }
     )
+    //getWishlist
+    this.wl.getWishlist().subscribe(cart => {
+      this.wishlist = cart.map(shopping =>{
+        return {
+          id: shopping.payload.doc.id,
+          ...shopping.payload.doc.data() as GoodsService
+        }
+      })
+    })
+  //Cart
+    this.cs.getCart().subscribe(cart => {
+      this.cart = cart.map(shopping =>{
+        return {
+          id: shopping.payload.doc.id,
+          ...shopping.payload.doc.data() as GoodsService
+        }
+      })
+    })
 
-    this.screenWidth = window.innerWidth;
-
-    this.screenHeight = window.innerHeight;
-
+    // this.screenWidth = window.innerWidth;
+    //
+    // this.screenHeight = window.innerHeight;
+    //
     this.showMainMenu = false
 
   }
 
-  @HostListener('window:resize', ['$event'])
-
-  onResize(event) {
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth <= 360){
-      this.screenMop = true
-      this.showMainMenu = false
-    }else {
-      this.screenMop = false
-      this.showMainMenu = true
-    }
-  }
+  // @HostListener('window:resize', ['$event'])
+  //
+  // onResize(event) {
+  //   this.screenWidth = window.innerWidth;
+  //   if (this.screenWidth <= 360){
+  //     this.screenMop = true
+  //     this.showMainMenu = false
+  //   }else {
+  //     this.screenMop = false
+  //     this.showMainMenu = true
+  //   }
+  // }
 
   logout(){
     this.as.logout().then( res => console.log('logout'))

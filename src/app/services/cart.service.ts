@@ -11,12 +11,11 @@ import {Observable} from "rxjs";
 export class CartService {
 
   user: Observable<firebase.User>
-  userId: string =''
+  userId: string
 
   constructor( private fs: AngularFirestore, private as: AuthService, private afAuth: AngularFireAuth) {
-    this.user = afAuth.user
+    // this.user = afAuth.user
     this.userId = JSON.parse(localStorage.getItem('user')) ;
-    console.log(this.userId,'sssss')
   }
 
   addToCart(data: Good){

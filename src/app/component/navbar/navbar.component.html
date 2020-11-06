@@ -39,11 +39,25 @@
 <!---->
 <nav class="navbar  navbar-expand-md  justify-content-md-center justify-content-start parent1" style="height: 70px; color: #9292d2;   border-bottom:1.5px solid rgba(0, 0, 0, .12);" >
   <a class="navbar-brand d-md-none d-inline" href="">E-Commarce</a>
-  <p-toggleButton class="navbar-brand d-md-none d-inline" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>
-
+<!--  <p-toggleButton class="navbar-brand d-md-none d-inline" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>-->
+<!--  <div id="webapp_cover" (click)="mainMenu()">-->
+<!--    <div id="menu_button">-->
+<!--      <input type="checkbox" id="menu_checkbox">-->
+<!--      <label for="menu_checkbox" id="menu_label">-->
+<!--        <div id="menu_text_bar"></div>-->
+<!--      </label>-->
+<!--    </div>-->
+<!--  </div>-->
   <a class=" navbar-brand d-none d-lg-block" href="">E-Commarce</a>
-  <p-toggleButton class="navbar-brand d-none d-lg-block toButton" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>
-
+<!--  <p-toggleButton class="navbar-brand d-none d-lg-block toButton" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>-->
+  <div id="webapp_cover" style="margin-left: 150px; margin-top: 8px">
+    <div id="menu_button" >
+      <input type="checkbox" id="menu_checkbox" (click)="mainMenu()">
+      <label for="menu_checkbox" id="menu_label">
+        <div id="menu_text_bar"></div>
+      </label>
+    </div>
+  </div>
   <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
     <ul class="navbar-nav mx-auto text-md-center text-left">
         <span class="p-input-icon-left p-mb-2 p-mb-md-0">
@@ -54,12 +68,12 @@
     <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
       <div style="margin-top: 14px">
       <span class="p-overlay-badge p-mr-5">
-          <a class="pi pi-heart" style="font-size: 1.8em" routerLink="/cart"></a>
-          <span class="p-badge">2</span>
+          <a class="pi pi-heart" style="font-size: 1.8em" routerLink="/wishlist"></a>
+          <span class="p-badge" *ngIf="wishlist">{{wishlist.length}}</span>
       </span>
         <span class="p-overlay-badge p-mr-5">
           <a class="pi pi-shopping-cart" style="font-size: 1.8em" routerLink="/cart"></a>
-          <span class="p-badge">2</span>
+          <p class="p-badge" *ngIf="cart">{{cart.length}}</p>
       </span>
 <!--        <span class="p-overlay-badge p-mr-5">-->
 <!--          <i class="pi pi-shopping-cart" style="font-size: 1.5em"></i>-->
@@ -84,6 +98,14 @@
 <nav class="main-menu parent4 " *ngIf="showMainMenu">
   <ul>
     <li>
+      <a href="#" routerLink="/home">
+        <i class="fa fa-home fa-2x"></i>
+        <span class="nav-text">
+            Home
+          </span>
+      </a>
+    </li>
+    <li>
       <a href="#" routerLink="/shop">
         <i class="fa fa-male fa-2x"></i>
         <span class="nav-text">
@@ -91,7 +113,6 @@
 
           </span>
       </a>
-
     </li>
     <li class="has-subnav">
       <a href="#" routerLink="/shop">
