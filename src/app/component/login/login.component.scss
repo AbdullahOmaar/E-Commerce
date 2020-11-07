@@ -1,13 +1,19 @@
 .container{
-  width: 30%;
-  margin-top: 7%;
+  //margin-top: 7%;
   border: #ff96be;
-
+  width: 30%;
 }
 
 i{
   color: #138496;
 }
 
+@media (max-width: 375px) {
+  .container{
+    //margin-top: 7%;
+    border: #ff96be;
+    width: 95%;
+  }
+}
 
 

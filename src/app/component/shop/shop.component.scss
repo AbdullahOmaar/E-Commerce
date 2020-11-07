@@ -8,9 +8,23 @@
 
   .shop {
     //margin-top: 50px;
-    width: 65%;
+    //width: 100%;
   }
 
+
+  .headar{
+    align-items: center;
+    text-align: center;
+    justify-self: revert;
+    h1{
+      opacity: 0.85;
+      font-weight: 600;
+    }
+    .name{
+      margin: 5px;
+      opacity: 0.6;
+    }
+  }
 
   .product-name {
     font-size: 1.5rem;
@@ -125,7 +139,7 @@
   box-shadow:0 11px 15px 0 rgba(0, 0, 0, 0.1), 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.07);
   border:1.5px solid rgba(0, 0, 0, .12);
   border-radius: 30px;
-  width: 80%;
+  width: 60vh;
 }
 
 .search:hover{
@@ -180,6 +194,13 @@
       align-items: center;
       width: 100%;
     }
+
+  }
+  .search{
+    width: 100%;
+  }
+  .p-dropdown {
+    width: 100%;
   }
 }
 

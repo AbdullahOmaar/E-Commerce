@@ -24,15 +24,15 @@ export class HomeComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.gs.mainslider().subscribe(
-      data => {
-       this.goods= data.map(element=> {
-          return{
-            id: element.payload.doc.id,
-            ...element.payload.doc.data() as Good
-          }
-        })
-      })
+    // this.gs.mainslider().subscribe(
+    //   data => {
+    //    this.goods= data.map(element=> {
+    //       return{
+    //         id: element.payload.doc.id,
+    //         ...element.payload.doc.data() as Good
+    //       }
+    //     })
+    //   })
     }
 
   addToCart(index: number) {

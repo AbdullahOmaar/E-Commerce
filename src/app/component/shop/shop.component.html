@@ -1,21 +1,30 @@
 <br>
+<br><br><br>
 <br>
-<br>
-<br>
-<br>
-<div class="d-flex justify-content-center">
+<div class="container headar ">
+  <h1>
+    Shopping Cart
+  </h1>
+  <div>
+    <a href="#" routerLink="/home"> Home </a>   <a> > </a>    <a class="name"> Shopping Cart </a>
+  </div>
+</div>
+<br><br>
+<div class="">
 <div class="shop  container">
   <p-dataView #dv [value]="products" [paginator]="true"
               [rows]="9" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
     <ng-template pTemplate="header">
       <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between header">
-        <p-dropdown class="dropdown" [options]="sortOptions"   placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+        <p-dropdown class="dropdown  d-none d-lg-block" [options]="sortOptions"   placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
         <span class="p-input-icon-left p-mb-2 p-mb-md-0">
                     <i class="pi pi-search"></i>
                     <input class="search" type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
         </span>
-        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        <div class="d-none d-lg-block">
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
       </div>
     </ng-template>
     <ng-template let-product pTemplate="listItem">
@@ -47,9 +56,14 @@
               <span class="badge badge-pill badge-danger m-1" *ngIf="product.discount">-{{product.discount}}%</span>
               <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
             </div>
-            <span class="product-ategory" (click)="addWishlist(product)"><i class="fa fa-gratipay fa-2x"></i></span>
+            <span class="product-ategory" (click)="addWishlist(product)">
+              <i class="fa fa-gratipay fa-2x" pTooltip="Add to Wishlist" tooltipPosition="left"></i></span>
           </div>
-          <div  class="col-md-12"><span  class="pull-right" (click)="addCart(product)"><i class="fa fa-shopping-basket fa-lg"></i></span></div>
+          <div  class="col-md-12">
+            <span  class="pull-right" (click)="addCart(product)">
+               <i class="fa fa-shopping-basket fa-lg" pTooltip="Add to Cart" tooltipPosition="left"></i>
+            </span>
+          </div>
           <div class="product-grid-item-content">
             <img [src]="'' + product.photoUrl" [alt]="product.name"  (click)="setData(product)"/>
             <div class="product-name">{{product.name}}</div>

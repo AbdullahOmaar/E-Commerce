@@ -4,9 +4,17 @@
 }
 
 .container{
-  margin-top: 10%;
+  margin-top: 8%;
   align-items: center;
+  text-align: center;
+  h1{
+    opacity: 0.85;
+    font-weight: 600;
+  }
+  p{
+    opacity: 0.5;
 
+  }
 }
 .app-categories{
   margin-top: 5%;
@@ -26,35 +34,6 @@
   background-size: cover;
 }
 
-.goodsName{
-  font-size: 100px;
-  color: #f8f9fa;
-}
-.goodsDiscription{
-  width: 20vw;
-  max-height: 100px;
-  overflow: hidden;
-}
-.goodsImg{
-  margin-top: 60px;
-  width: 20vw;
-  height: 60vh;
-}
-.goodsButton{
-  margin-top: 30px;
-}
-
-.goodsImgMob{
-  margin-top: 50px;
-  width: 60%;
-  height: 50vh;
-}
-
-.goodsNameMob{
-  text-align: center;
-  font-size: 60px;
-  color: #f8f9fa;
-}
 
 
 .homeBody{

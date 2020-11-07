@@ -1,0 +1,82 @@
+
+
+.container{
+  margin-top: 12%;
+  align-items: center;
+
+}
+
+.goodsName{
+  font-size: 100px;
+  color: #f8f9fa;
+}
+.goodsDiscription{
+  width: 20vw;
+  max-height: 100px;
+  overflow: hidden;
+}
+.goodsImg{
+  margin-top: 20px;
+  width: 20vw;
+  height: 60vh;
+}
+.goodsButton{
+  margin-top: 50px;
+  width: 240px;
+  .details  {
+    background-color:#ebedf0;
+    border-radius:14px;
+    border:0px solid #324b94;
+    display:inline-block;
+    cursor:pointer;
+    color: #1a151a;
+    font-family:Arial;
+    font-size:17px;
+    padding:7px 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5f77b3;
+  }
+  .buynow{
+    background-color:#363535;
+    border-radius:14px;
+    border:0px solid #324b94;
+    display:inline-block;
+    cursor:pointer;
+    color: #f5f5f5;
+    font-family:Arial;
+    font-size:17px;
+    padding:7px 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5f77b3;
+  }
+  .details:hover {
+    background-color: #363535;
+    color: #f5f5f5;
+  }
+  .buynow:hover{
+    background-color: #ebedf0;
+    color: #1a151a;
+  }
+  .myButton:active {
+    position:relative;
+    top:1px;
+  }
+
+
+}
+.card-img-top{
+  height: 400px;
+}
+
+.goodsImgMob{
+  margin-top: 50px;
+  width: 60%;
+  height: 50vh;
+}
+
+.goodsNameMob{
+  text-align: center;
+  font-size: 60px;
+  color: #f8f9fa;
+}
+

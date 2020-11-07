@@ -21,7 +21,17 @@
 }
 
 .headar{
+  align-items: center;
   text-align: center;
+  justify-self: revert;
+  h1{
+    opacity: 0.85;
+    font-weight: 600;
+  }
+  .name{
+    margin: 5px;
+    opacity: 0.6;
+  }
 }
 
 .Summary{

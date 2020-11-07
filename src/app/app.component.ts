@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import * as AOS from 'aos';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,11 @@ export class AppComponent {
   title = 'E-Commerce';
 
 
+  constructor(private as: AuthService) {
+  }
   ngOnInit(){
-    AOS.init();
+    AOS.init()
+
   }
 
 }

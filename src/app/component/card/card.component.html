@@ -13,9 +13,16 @@
         <span class="badge badge-pill badge-danger m-1" *ngIf="product.discount">-{{product.discount}}%</span>
         <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
       </div>
-      <span class="product-ategory  "><i class="fa fa-gratipay fa-2x" (click)="addWishlist(product)"></i></span>
+      <span class="product-ategory  ">
+        <i class="fa fa-gratipay fa-2x" (click)="addWishlist(product)" pTooltip="Add to Wishlist" tooltipPosition="left">
+
+        </i>
+      </span>
     </div>
-    <div  class="col-md-12"><span class="pull-right"><i class="fa fa-shopping-basket fa-lg" (click)="addCart(product)"></i></span></div>
+    <div  class="col-md-12"><span class="pull-right">
+      <i class="fa fa-shopping-basket fa-lg" (click)="addCart(product)" pTooltip="Add to Cart" tooltipPosition="left">
+      </i></span>
+    </div>
     <div class="product-grid-item-content">
       <img [src]="'' + product.photoUrl" [alt]="product.name" (click)="setData(product)"/>
       <div class="product-name">{{product.name}}</div>

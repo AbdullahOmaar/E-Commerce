@@ -59,6 +59,8 @@ import { GoodComponent } from './component/good/good.component';
 import {OrderListModule} from "primeng/orderlist";
 import {InputNumberModule} from "primeng/inputnumber";
 import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { MainSliderComponent } from './component/main-slider/main-slider.component';
+import {TooltipModule} from "primeng/tooltip";
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { WishlistComponent } from './component/wishlist/wishlist.component';
     NavbarComponent,
     GoodComponent,
     WishlistComponent,
+    MainSliderComponent,
 
 
 
@@ -136,7 +139,8 @@ import { WishlistComponent } from './component/wishlist/wishlist.component';
     PanelMenuModule,
     ToggleButtonModule,
     OrderListModule,
-    InputNumberModule
+    InputNumberModule,
+    TooltipModule
 
 
   ],

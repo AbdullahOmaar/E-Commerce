@@ -1,12 +1,17 @@
 .container{
-  width: 500px;
-  margin-top: 4%;
+  //margin-top: 7%;
   border: #ff96be;
+  width: 30%;
 }
 
 i{
   color: #138496;
 }
 
-
-
+@media (max-width: 375px) {
+  .container{
+    //margin-top: 7%;
+    border: #ff96be;
+    width: 95%;
+  }
+}

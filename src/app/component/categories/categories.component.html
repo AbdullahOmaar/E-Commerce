@@ -1,10 +1,7 @@
 <!--Home -->
 <div class="row ">
-<div class="card " *ngFor="let goods of goods"
-                     data-aos="zoom-in"
-                     data-aos-easing="linear"
-                     data-aos-duration="600">
-  <div class="img-avatar">
+<div class="card " *ngFor="let goods of goods,">
+  <div class="img-avatar" >
   </div>
   <div class="card-text">
     <div class="portada">
@@ -14,9 +11,7 @@
       <div class="title">{{goods.name}}</div>
       <p>{{goods.discription}}</p>
       <div class="actions">
-        <button><i class="fa fa-heart"></i></button>
-        <button><i class="fa fa-envelope"></i></button>
-        <button><i class="fa fa-heart"></i></button>
+        <a href="#" class="buynow" routerLink="/shop">Shop Now</a>
       </div>
     </div>
   </div>
