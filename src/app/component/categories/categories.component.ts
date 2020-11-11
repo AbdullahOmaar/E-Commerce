@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Good} from '../../interface/good';
 import {GoodsService} from '../../services/goods.service';
 import {CategoryService} from '../../services/category.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +14,8 @@ export class CategoriesComponent implements OnInit {
   goods : Good[] = []
 
   constructor(private gs: GoodsService,
-              private cs: CategoryService) { }
+              private cs: CategoryService,
+              private router: Router,) { }
 
   ngOnInit(): void {
     this.cs.gitAllCategory().subscribe(
@@ -26,5 +28,14 @@ export class CategoriesComponent implements OnInit {
         })
       })
   }
+
+    categories :any
+    selectCategory(good){
+      console.log(good.name)
+      this.categories = good.name
+      this.gs.setselectCategory(this.categories);
+      console.log(this.categories)
+      this.router.navigate(['shop'])
+      }
 
 }

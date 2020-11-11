@@ -37,7 +37,7 @@ export class ShopComponent implements OnInit {
               private wl: WishlistService) { }
 
   ngOnInit() {
-    this.gs.gitAllGoods().subscribe(
+    this.gs.gitSelectedCategory().subscribe(
       data => {
         this.products= data.map(element=> {
           return{
@@ -90,7 +90,7 @@ export class ShopComponent implements OnInit {
       name: cart.name,
       photoUrl: cart.photoUrl,
       price: cart.price,
-      description: cart.discription,
+      description: cart.description,
     }
     this.wl.addToWishlist(wishlistData).then(res => { console.log(res)})
   }

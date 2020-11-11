@@ -37,7 +37,7 @@
 
 <!---->
 <!---->
-<nav class="navbar  navbar-expand-md  justify-content-md-center justify-content-start parent1" style="height: 70px; color: #9292d2;   border-bottom:1.5px solid rgba(0, 0, 0, .12);" >
+<nav class="navbar  navbar-expand-md navbar navbar-expand-lg navbar-light bg-light justify-content-md-center justify-content-start parent1" style="height: 70px; color: #9292d2;   border-bottom:1.5px solid rgba(0, 0, 0, .12);" >
   <a class="navbar-brand d-md-none d-inline" href="">E-Commarce</a>
 <!--  <p-toggleButton class="navbar-brand d-md-none d-inline" [(ngModel)]="checked1" onIcon="pi pi pi-bars" offIcon="pi pi-times" (click)="mainMenu()"></p-toggleButton>-->
 <!--  <div id="webapp_cover" (click)="mainMenu()">-->
@@ -68,11 +68,11 @@
     <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
       <div style="margin-top: 14px">
       <span class="p-overlay-badge p-mr-5">
-          <a class="pi pi-heart" style="font-size: 1.8em" routerLink="/wishlist"></a>
+          <a class="pi pi-heart" style="font-size: 1.8em" routerLink="/wishlist" pTooltip="wishlist" tooltipPosition="left"></a>
           <span class="p-badge" *ngIf="wishlist">{{wishlist.length}}</span>
       </span>
         <span class="p-overlay-badge p-mr-5">
-          <a class="pi pi-shopping-cart" style="font-size: 1.8em" routerLink="/cart"></a>
+          <a class="pi pi-shopping-cart" style="font-size: 1.8em" routerLink="/cart" pTooltip="cart" tooltipPosition="left"></a>
           <p class="p-badge" *ngIf="cart">{{cart.length}}</p>
       </span>
 <!--        <span class="p-overlay-badge p-mr-5">-->
@@ -80,8 +80,10 @@
 <!--          <span class="p-badge">2</span>-->
 <!--      </span>-->
       </div>
-      <li class="nav-item" *ngIf="!isUser"
-      ><a class="nav-link" href="" routerLink="/login"><i class="fa fa-sign-in" style="font-size: 30px;"> </i></a>
+      <li class="nav-item" *ngIf="!isUser">
+        <a class="nav-link" href="" routerLink="/login"  pTooltip="login" tooltipPosition="left">
+        <i class="fa fa-sign-in" style="font-size: 30px;"> </i>
+      </a>
       </li>
       <li class="nav-item" *ngIf="isUser">
         <a class="nav-link" href="" routerLink="/login" (click)="logout()">
@@ -100,7 +102,7 @@
 
 
 <div class="area"></div>
-<nav class="main-menu parent4 " *ngIf="showMainMenu">
+<nav class="main-menu parent4 bg-light" *ngIf="showMainMenu">
   <ul>
     <li>
       <a href="#" routerLink="/home">
@@ -111,7 +113,7 @@
       </a>
     </li>
     <li>
-      <a href="#" routerLink="/shop">
+      <a href="#" routerLink="/shop" (click)="selectCategory('Men\'s Fashion')">
         <i class="fa fa-male fa-2x"></i>
         <span class="nav-text">
             Men's Fashion
@@ -120,7 +122,7 @@
       </a>
     </li>
     <li class="has-subnav">
-      <a href="#" routerLink="/shop">
+      <a href="#" routerLink="/shop"  (click)="selectCategory(' Women\'s Fashion')">
         <i class="fa fa-female fa-2x"></i>
         <span class="nav-text">
             Women's Fashion
@@ -128,8 +130,8 @@
       </a>
 
     </li>
-    <li class="has-subnav">
-      <a href="#" routerLink="/shop">
+    <li  href="#" class="has-subnav" (click)="selectCategory('Kid\'s Fashion')">
+      <a  >
         <i class="fa fa-child fa-2x"></i>
         <span class="nav-text">
             Kid's Fashion
@@ -139,7 +141,7 @@
 
     </li>
     <li class="has-subnav">
-      <a href="#" routerLink="/shop">
+      <a href="#" routerLink="/shop" (click)="selectCategory('Sports & Fitness')">
         <i class="fa fa-bicycle fa-2x"></i>
         <span class="nav-text">
             Sports & Fitness
@@ -149,7 +151,7 @@
 
     </li>
     <li>
-      <a href="#" routerLink="/shop">
+      <a href="#" routerLink="/shop" (click)="selectCategory('Bags')">
         <i class="fa fa-shopping-bag fa-2x"></i>
         <span class="nav-text">
             Bags
@@ -157,7 +159,7 @@
       </a>
     </li>
     <li>
-      <a href="#"   routerLink="/cart">
+      <a href="#"   routerLink="/cart" (click)="selectCategory('Wishlist')">
         <i class="fa fa-heart fa-2x"></i>
         <span class="nav-text">
             Wishlist
@@ -165,7 +167,7 @@
       </a>
     </li>
     <li>
-      <a href="#"  routerLink="/cart">
+      <a href="#"  routerLink="/cart" >
         <i class="fa fa-cart-arrow-down fa-2x"></i>
         <span class="nav-text">
             My Orders

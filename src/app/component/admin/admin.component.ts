@@ -154,13 +154,13 @@ export class AdminComponent implements OnInit {
     let
       name  =(<Good>form.value).name,
       price =(<Good>form.value).price,
-      discription =(<Good>form.value).discription,
+      description =(<Good>form.value).description,
       image =(<HTMLInputElement>this.image.nativeElement).files[0],
       country =(<Good>form.value).country,
       status =(<Good>form.value).status,
       date =(<Good>form.value).date,
       category =(<Good>form.value).category
-    this.gs.addNewGood(name, price, discription, image, country, status, date, category).then(
+    this.gs.addNewGood(name, price, description, image, country, status, date, category).then(
       res => console.log(res)
     )
       .catch(res => console.log(res.message))
@@ -191,9 +191,9 @@ export class AdminComponent implements OnInit {
   AddNewCategory(form: NgForm, evt: any){
     let
       name  =(<Good>form.value).name,
-      discription =(<Good>form.value).discription,
+      description =(<Good>form.value).description,
       image = this.uploadedFiles
-      this.cgs.AddCategory(name,discription, image).then(
+      this.cgs.AddCategory(name,description, image).then(
       res => console.log(res),
     ).then(
         res => this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000})
@@ -223,13 +223,13 @@ export class AdminComponent implements OnInit {
       id = this.editProduct.id,
       name  =(<Good>form.value).name,
       price =(<Good>form.value).price,
-      discription =(<Good>form.value).discription,
+      description =(<Good>form.value).description,
       image =(<HTMLInputElement>this.image.nativeElement).files[0],
       country =(<Good>form.value).country,
       status =(<Good>form.value).status,
       date =(<Good>form.value).date,
       category =(<Good>form.value).category
-      this.gs.update(id,name, price, discription, image, country, status, date, category).then(
+      this.gs.update(id,name, price, description, image, country, status, date, category).then(
       res => console.log(res)
     )
       .catch(res => console.log(res.message))

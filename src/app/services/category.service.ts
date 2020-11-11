@@ -9,7 +9,7 @@ export class CategoryService {
 
   constructor(private fs: AngularFirestore, private storage: AngularFireStorage) { }
 
-  AddCategory(name: string,discription, image: any, ){
+  AddCategory(name: string,description, image: any, ){
     return new Promise((resolve, reject) => {
       let ref = this.storage.ref('category/' + image.name)
       ref.put(image).then(() =>{
@@ -17,7 +17,7 @@ export class CategoryService {
           console.log(photoUrl)
           this.fs.collection(`category/` ).add({
             name,
-            discription,
+            description,
             photoUrl,
           }).then(() => resolve('add sucss'))
         })

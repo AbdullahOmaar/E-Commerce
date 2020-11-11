@@ -14,7 +14,6 @@ export class GoodComponent implements OnInit {
   id?: string
   name?: string
   price?: number
-  discription?: string
   photoUrl?: string
   amount?: number
   code?:string;
@@ -37,6 +36,7 @@ export class GoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.good = this.gs.getData()
+    console.log(this.good)
     if (!this.gs.getData()){
       this.router.navigate(['/'])
     }
@@ -44,7 +44,7 @@ export class GoodComponent implements OnInit {
     this.status = this.good.status
     this.discount = this.good.discount
     this.photoUrl = this.good.photoUrl
-    this.discription = this.good.discription
+    this.description = this.good.description
     this.category = this.good.category
     this.price = this.good.price
 

@@ -9,11 +9,11 @@
       <div class="row">
         <div class="col-sm  ">
           <p class="goodsName"> {{goods.name}}</p>
-          <div class="col-sm">
+          <div class="col-sm goodsPrice">
             <h3>  {{goods.price}}LE</h3>
           </div>
-          <div class="col-sm goodsDiscription ">
-            {{goods.discription}}
+          <div class="col-sm goodsDescription ">
+            {{goods.description}}
           </div>
           <div class="col-sm  d-flex justify-content-between goodsButton">
             <a href="#" class="buynow">Details</a>
@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <div class="col-ms goodsImg">
+        <div class="col-ms goodsImg" >
           <img class="card-img-top" [src]="goods.photoUrl" alt="Card image cap">
         </div>
       </div>
@@ -33,11 +33,11 @@
         <div class="col goodsImgMob">
           <img class="card-img-top" [src]="goods.photoUrl" alt="Card image cap">
         </div>
-        <div class="col-sm ">
+        <div class="col-sm justify-content-center mop">
           <p class="goodsNameMob"> {{goods.name}}</p>
-          <div class="col-sm">
-            <button pButton pRipple type="button" label="Primary" class="p-button-rounded"></button>
-            <button pButton pRipple type="button" label="Secondary" class="p-button-rounded p-button-secondary"></button>
+          <div class="col-sm d-flex justify-content-between goodsButton ">
+            <a href="#" class="buynow">Details</a>
+            <a href="#" class="details">Buy Now</a>
           </div>
         </div>
 

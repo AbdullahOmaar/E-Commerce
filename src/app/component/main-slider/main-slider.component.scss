@@ -1,28 +1,29 @@
 
 
 .container{
-  margin-top: 12%;
+  margin-top: 5%;
   align-items: center;
 
 }
 
 .goodsName{
-  font-size: 100px;
+  margin-top: 30%;
+  font-size: 60px;
   color: #f8f9fa;
 }
-.goodsDiscription{
+.goodsDescription{
   width: 20vw;
   max-height: 100px;
   overflow: hidden;
 }
 .goodsImg{
-  margin-top: 20px;
-  width: 20vw;
-  height: 60vh;
+  margin-top: 30px;
+  width: 30vw;
+  height: 80vh;
 }
 .goodsButton{
   margin-top: 50px;
-  width: 240px;
+  width: 260px;
   .details  {
     background-color:#ebedf0;
     border-radius:14px;
@@ -46,6 +47,7 @@
     font-family:Arial;
     font-size:17px;
     padding:7px 20px;
+    width: 100px;
     text-decoration:none;
     text-shadow:0px 1px 0px #5f77b3;
   }
@@ -65,18 +67,20 @@
 
 }
 .card-img-top{
-  height: 400px;
+  height: 600px;
 }
 
 .goodsImgMob{
   margin-top: 50px;
-  width: 60%;
+  width: 80%;
   height: 50vh;
 }
 
 .goodsNameMob{
+  margin-top: 30%;
+  height: 100px;
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
   color: #f8f9fa;
 }
 

@@ -12,11 +12,11 @@ export interface Good {
   id?: string,
   name?: string,
   price?: number,
-  discription?: string
   photoUrl?: string,
   amount?: number,
   code?:string;
   description?:string;
+  discription?:string;
   quantity?:number;
   inventoryStatus?:string;
   category?:string;

@@ -4,6 +4,7 @@ import {AuthService} from '../../services/auth.service';
 import {GoodsService} from "../../services/goods.service";
 import {WishlistService} from "../../services/wishlist.service";
 import {CartService} from "../../services/cart.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -32,7 +33,9 @@ export class NavbarComponent implements OnInit {
   cart : any
   constructor(private as: AuthService,
               private wl: WishlistService,
-              private cs: CartService,) { }
+              private cs: CartService,
+              private router: Router,
+              private gs: GoodsService) { }
 
 
   ngOnInit() : void{
@@ -102,6 +105,15 @@ export class NavbarComponent implements OnInit {
       this.showMainMenu = false
 
     }
+  }
+
+  categories :any
+  selectCategory(good){
+    console.log(good.name)
+    this.categories = good
+    this.gs.setselectCategory(this.categories);
+    console.log(this.categories)
+    this.router.navigate(['shop'])
   }
 
 }

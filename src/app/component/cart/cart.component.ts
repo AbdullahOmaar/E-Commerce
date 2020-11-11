@@ -62,6 +62,7 @@ ngOnInit(): void {
   setData(product) {
     this.myproduct = product
     this.gs.setData(this.myproduct);
+    console.log(this.myproduct )
     this.router.navigate(['good'])
   }
 }

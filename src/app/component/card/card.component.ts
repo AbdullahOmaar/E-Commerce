@@ -59,7 +59,7 @@ export class CardComponent implements OnInit {
       photoUrl: cart.photoUrl,
       amount: 1,
       price: cart.price,
-      description: cart.discription,
+      description: cart.description,
     }
     this.cs.addToCart(cartData).then(res => { console.log(res)})
   }
@@ -71,7 +71,7 @@ export class CardComponent implements OnInit {
       name: cart.name,
       photoUrl: cart.photoUrl,
       price: cart.price,
-      description: cart.discription,
+      description: cart.description,
     }
     this.wl.addToWishlist(wishlistData).then(res => { console.log(res)})
   }

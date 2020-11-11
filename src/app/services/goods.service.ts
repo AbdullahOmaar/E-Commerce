@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import {rejects} from 'assert';
 import {Observable, of} from "rxjs";
 import {Good} from "../interface/good";
+import {MessageService} from "primeng/api";
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,31 @@ export class GoodsService {
    // status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
 
 
-  constructor(private fs: AngularFirestore, private storage: AngularFireStorage) { }
+  constructor(private fs: AngularFirestore,
+              private storage: AngularFireStorage,
+              private messageService: MessageService) { }
+
+  // share data for cart && categories item
+  Data : any
+  setData(data){
+    this.Data = data
+    console.log(this.Data)
+  }
+  getData(){
+    return this.Data
+  }
+  // share  Select categories
+  setselectCategory(categories){
+    localStorage.setItem('selectCategory', JSON.stringify(categories));
+  }
+  // endSelect categories
 
   gitAllGoods() {
     return this.fs.collection(`goods/Men's Fashion/item`).snapshotChanges()
+  }
+
+  gitSelectedCategory() {
+    return this.fs.collection(`goods/${JSON.parse(localStorage.getItem('selectCategory'))}/item`).snapshotChanges()
   }
 
   mainslider() {
@@ -30,17 +52,9 @@ export class GoodsService {
   deleteitem(category, id){
     return this.fs.doc(`goods/${category}/item/${id}`).delete()
   }
-  // share data for cart item
-    add : any
-  setData(data){
-    this.add = data
-  }
-  getData(){
-    return this.add
-  }
-  // End //
 
-  addNewGood(name: string, price: number,discription: string, image: File, country: any, status: string, date: Date, category: string ){
+
+  addNewGood(name: string, price: number,description: string, image: File, country: any, status: string, date: Date, category: string ){
     return new Promise((resolve, reject) => {
       let ref = this.storage.ref('goods/' + image.name)
       ref.put(image).then(() =>{
@@ -49,19 +63,19 @@ export class GoodsService {
           this.fs.collection(`goods/${category}/item` ).add({
             name,
             price,
-            discription,
+            description,
             photoUrl,
             country,
             status,
             date,
             category
-          }).then(() => resolve('add sucss'))
+          }).then(() => resolve(this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000})))
         })
       })
     })
   }
 
-  update(id ,name: string, price: number,discription: string, image: File, country: any, status: string, date: Date, category: string ){
+  update(id ,name: string, price: number,description: string, image: File, country: any, status: string, date: Date, category: string ){
     console.log(id , 'category')
     return new Promise((resolve, reject) => {
       let ref = this.storage.ref('goods/' + image.name)
@@ -70,7 +84,7 @@ export class GoodsService {
           this.fs.doc(`goods/${category}/item/${id}` ).update({
             name,
             price,
-            discription,
+            description,
             photoUrl,
             country,
             status,

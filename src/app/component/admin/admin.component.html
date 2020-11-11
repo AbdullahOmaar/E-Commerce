@@ -6,7 +6,7 @@
 <!--      <form #f="ngForm" (ngSubmit)="addNewGood(f)">-->
 <!--        <input type="text" class="form-control" name="name" ngModel placeholder="Name" required>-->
 <!--        <input type="number" class="form-control" name="price" ngModel placeholder="Price" required>-->
-<!--        <input type="text" class="form-control" name="discription" ngModel placeholder="discription" required>-->
+<!--        <input type="text" class="form-control" name="description" ngModel placeholder="description" required>-->
 <!--        <input #image type="file" ngModel name="image" required> <br>-->
 <!--        <input type="submit" value="add" class="btn btn-primary" [disabled]="f.invalid">-->
 <!--      </form>-->
@@ -199,9 +199,9 @@
       </div>
 
       <div class="form-group">
-        <label for="inputDiscription">discription</label>
-        <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
-               name="discription" ngModel >
+        <label for="inputDescription">description</label>
+        <input type="text" class="form-control" id="inputDescription" placeholder="Description"
+               name="description" ngModel >
       </div>
 
       <div class="form-group">
@@ -272,9 +272,9 @@
       </div>
 
       <div class="form-group">
-        <label for="inputDiscription">discription</label>
-        <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
-               name="discription" [(ngModel)]="editProduct.discription" >
+        <label for="inputDescription">description</label>
+        <input type="text" class="form-control" id="inputDescription" placeholder="Description"
+               name="description" [(ngModel)]="editProduct.description" >
       </div>
 
       <div class="form-group">
@@ -306,9 +306,9 @@
                name="name" ngModel  required>
       </div>
       <div class="form-group col-6">
-          <label for="inputDiscription">discription</label>
-          <input type="text" class="form-control" id="inputDiscription" placeholder="Discription"
-                 name="discription" ngModel >
+          <label for="inputDescription">description</label>
+          <input type="text" class="form-control" id="inputDescription" placeholder="Description"
+                 name="description" ngModel >
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 export interface Category{
   name?: string;
-  discription?: string
+  description?: string
   image?: any;
 }
