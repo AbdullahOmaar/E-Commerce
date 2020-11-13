@@ -5,10 +5,13 @@ import {rejects} from 'assert';
 import {Observable, of} from "rxjs";
 import {Good} from "../interface/good";
 import {MessageService} from "primeng/api";
+import {ShopComponent} from "../component/shop/shop.component";
 
 @Injectable({
   providedIn: 'root'
+
 })
+
 export class GoodsService {
 
    // status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
@@ -16,7 +19,8 @@ export class GoodsService {
 
   constructor(private fs: AngularFirestore,
               private storage: AngularFireStorage,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              ) { }
 
   // share data for cart && categories item
   Data : any
@@ -30,6 +34,7 @@ export class GoodsService {
   // share  Select categories
   setselectCategory(categories){
     localStorage.setItem('selectCategory', JSON.stringify(categories));
+    console.log(JSON.parse(localStorage.getItem('selectCategory')))
   }
   // endSelect categories
 

@@ -31,10 +31,8 @@ export class CategoriesComponent implements OnInit {
 
     categories :any
     selectCategory(good){
-      console.log(good.name)
       this.categories = good.name
       this.gs.setselectCategory(this.categories);
-      console.log(this.categories)
       this.router.navigate(['shop'])
       }
 

@@ -140,12 +140,14 @@ import {TooltipModule} from "primeng/tooltip";
     ToggleButtonModule,
     OrderListModule,
     InputNumberModule,
-    TooltipModule
+    TooltipModule,
+    AccordionModule
 
 
   ],
   bootstrap: [AppComponent],
-  providers: [HttpClient,MessageService,ConfirmationService]
+  providers: [HttpClient,MessageService,ConfirmationService],
+
 
 })
 export class AppModule { }

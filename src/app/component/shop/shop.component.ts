@@ -37,6 +37,7 @@ export class ShopComponent implements OnInit {
               private wl: WishlistService) { }
 
   ngOnInit() {
+    // this.products = []
     this.gs.gitSelectedCategory().subscribe(
       data => {
         this.products= data.map(element=> {
@@ -71,7 +72,6 @@ export class ShopComponent implements OnInit {
   }
 
   addCart(cart){
-    console.log(cart,'ssssssssssssssssss')
     let cartData = {
       DataId: cart.id,
       name: cart.name,
@@ -80,7 +80,6 @@ export class ShopComponent implements OnInit {
       price: cart.price
     }
     this.cs.addToCart(cartData).then(res => { console.log(res)})
-    console.log('sssssssssss')
   }
 
   addWishlist(cart){
@@ -99,5 +98,20 @@ export class ShopComponent implements OnInit {
     this.myproduct = product
     this.gs.setData(this.myproduct);
     this.router.navigate(['good'])
+  }
+
+  getData() {
+  //   this.gs.gitSelectedCategory().subscribe(
+  //     data => {
+  //       this.products= data.map(element=> {
+  //         return{
+  //           id: element.payload.doc.id,
+  //           ...element.payload.doc.data() as Good
+  //         }
+  //       })
+  //     })
+    this.ngOnInit()
+    console.log(this.products)
+    // window.location.reload();
   }
 }

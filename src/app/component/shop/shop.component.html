@@ -10,10 +10,12 @@
   </div>
 </div>
 <br><br>
-<div class="">
-<div class="shop  container">
+<div class="container">
+<div class="row no-gutters ">
+<div class="col-10 order-last ">
+  <div class="shop  ">
   <p-dataView #dv [value]="products" [paginator]="true"
-              [rows]="9" filterBy="name"
+              [rows]="16" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
     <ng-template pTemplate="header">
       <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between header">
@@ -22,7 +24,7 @@
                     <i class="pi pi-search"></i>
                     <input class="search" type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
         </span>
-        <div class="d-none d-lg-block">
+        <div class="d-none d-lg-block disabled">
           <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
       </div>
@@ -40,13 +42,13 @@
           <div class="product-list-action">
             <span class="product-price">${{product.price}}</span>
             <p-button icon="pi pi-shopping-cart"  label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+<!--            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
           </div>
         </div>
       </div>
     </ng-template>
     <ng-template let-product pTemplate="gridItem" >
-      <div class="p-col-12 p-md-3 productCart "  data-aos="zoom-in"
+      <div class="p-col-10 p-md-4 productCart "  data-aos="zoom-in"
                                                  data-aos-easing="linear"
                                                  data-aos-duration="600">
         <div class="product-grid-item card" >
@@ -79,9 +81,28 @@
       </div>
     </ng-template>
   </p-dataView>
+  </div>
+</div>
+<!--Filter -->
+<div class="col-2 col-md-2 order-first " >
+  <div class="filter">
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
+  <p>ssssssss</p>
 </div>
 </div>
+<!---->
 
+
+</div>
+</div>
 <!--fliter-->
     <div class="container parent4"  >
       <div class=" ">
@@ -90,6 +111,8 @@
     </div>
 <p-overlayPanel [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" #op [dismissable]="true" [showCloseIcon]="true">
   <ng-template pTemplate>
+    <div class="">
     <app-filter></app-filter>
+    </div>
   </ng-template>
 </p-overlayPanel>

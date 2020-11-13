@@ -16,6 +16,7 @@
     align-items: center;
     text-align: center;
     justify-self: revert;
+    overflow: hidden;
     h1{
       opacity: 0.85;
       font-weight: 600;
@@ -23,12 +24,16 @@
     .name{
       margin: 5px;
       opacity: 0.6;
+      overflow: hidden;
     }
   }
 
   .product-name {
     font-size: 1.5rem;
     font-weight: 700;
+    max-height: 38px;
+    overflow: hidden;
+
   }
 
   .product-description {
@@ -57,9 +62,11 @@
     padding: 1rem;
     width: 100%;
 
+
     img {
       width: 150px;
       max-height: 150px;
+      min-height: 150px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       margin-right: 2rem;
     }
@@ -161,7 +168,6 @@
   margin-bottom: 2rem;
   //background: #f2f2f6;
   border-radius: 30px;
-
 }
 
 @media screen and (max-width: 576px) {
@@ -176,6 +182,8 @@
 
     .product-list-detail {
       text-align: center;
+      overflow: hidden;
+
     }
 
     .product-price {
@@ -204,6 +212,10 @@
   }
 }
 
+.filter{
+  position: sticky;
+  top: 20%;
+}
 
 .parent4 {
   position: fixed;

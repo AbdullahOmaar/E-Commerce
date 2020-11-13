@@ -12,7 +12,6 @@
   text-align: center;
   vertical-align: middle;
   font-size:20px;
-
 }
 
 
@@ -32,8 +31,8 @@
   left:0;
   width:60px;
   overflow:hidden;
-  -webkit-transition:width .05s linear;
-  transition:width .05s linear;
+  -webkit-transition:width .4s linear;
+  transition:width .4s linear;
   -webkit-transform:translateZ(0) scale(1,1);
   z-index:1000;
   margin-top: 70px;
@@ -46,7 +45,8 @@
 .main-menu li {
   position:relative;
   display:block;
-  width:250px;
+  width:290px;
+
 }
 
 .main-menu li>a {
@@ -54,20 +54,21 @@
   display:table;
   border-collapse:collapse;
   border-spacing:0;
-  color:#999;
+  color: #827373;
   font-family: arial;
   font-size: 14px;
   text-decoration:none;
-  -webkit-transform:translateZ(0) scale(1,1);
-  -webkit-transition:all .1s linear;
-  transition:all .1s linear;
+  //-webkit-transform:translateZ(0) scale(1,1);
+  -webkit-transition:all .2s step-start;
+  transition:all .4s step-start;
+  height:40px;
 
 }
 
 .main-menu .nav-icon {
   position:relative;
   display:table-cell;
-  width:60px;
+  width:70px;
   height:36px;
   text-align:center;
   vertical-align:middle;
@@ -78,29 +79,31 @@
   position:relative;
   display:table-cell;
   vertical-align:middle;
-  width:190px;
+  width:184px;
   font-family: 'Titillium Web', sans-serif;
 }
 
 .main-menu>ul.logout {
   position:absolute;
   left:0;
-  margin-top: 10px;
-  border-top:1.5px solid rgba(0, 0, 0, .12);
+  border-top:1.5px solid rgba(186, 112, 112, 0.12);
   //bottom:0;
 }
 
 .no-touch .scrollable.hover {
   overflow-y:hidden;
+
 }
 
 .no-touch .scrollable.hover:hover {
   overflow-y:auto;
   overflow:visible;
+
 }
 
 a:hover,a:focus {
   text-decoration:none;
+
 }
 
 nav {
@@ -117,12 +120,15 @@ nav ul,nav li {
   padding:0;
 }
 .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
-  color:#fff;
-  background-color:#5fa2db;
+  //color:#fff;
+  //background-color:#5fa2db;
+  box-shadow:inset 0 0 10px 0 rgba(95, 71, 71, 0.35);
+  border:0px solid rgba(0, 0, 0, .12);
+  border-radius: 15px;
 }
 .area {
   float: left;
-  background: #e2e2e2;
+  background: #a83e3e;
   width: 100%;
   height: 100%;
 }
@@ -214,7 +220,7 @@ nav ul,nav li {
   left: 0;
   width: 100%;
   height: 5px;
-  background-color: #19067b;
+  background-color: #1978c4;
 }
 
 #menu_label:before, #menu_label:after
@@ -269,9 +275,9 @@ nav ul,nav li {
 
 @keyframes moveUpThenDown
 {
-  0%{ top:0; }
-  50%{ top:-27px;}
-  100%{ top:-14px; }
+  0%{ top:5; }
+  50%{ top:-28px;}
+  100%{ top:-20px; }
 }
 
 @keyframes shakeWhileMovingUp

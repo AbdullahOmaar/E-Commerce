@@ -5,11 +5,13 @@ import {GoodsService} from "../../services/goods.service";
 import {WishlistService} from "../../services/wishlist.service";
 import {CartService} from "../../services/cart.service";
 import {Router} from "@angular/router";
+import {ShopComponent} from "../shop/shop.component";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  providers: [ShopComponent],
 })
 export class NavbarComponent implements OnInit {
 
@@ -35,7 +37,8 @@ export class NavbarComponent implements OnInit {
               private wl: WishlistService,
               private cs: CartService,
               private router: Router,
-              private gs: GoodsService) { }
+              private gs: GoodsService,
+              private shopCom: ShopComponent) { }
 
 
   ngOnInit() : void{
@@ -107,12 +110,14 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+
+  // coll categories
+
   categories :any
   selectCategory(good){
-    console.log(good.name)
     this.categories = good
     this.gs.setselectCategory(this.categories);
-    console.log(this.categories)
+    this.shopCom.getData()
     this.router.navigate(['shop'])
   }
 
