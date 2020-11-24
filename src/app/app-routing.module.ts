@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login' , component: LoginComponent },
   { path: 'signup' , component: SignupComponent },
   { path: 'cart' , component: CartComponent },
-  { path: 'shop' , component: ShopComponent},
+  { path: 'shop' , component: ShopComponent,},
   { path: 'filter' , component: FilterComponent},
   { path: 'good' , component: GoodComponent},
   { path: 'wishlist' , component: WishlistComponent},

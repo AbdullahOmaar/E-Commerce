@@ -1,0 +1,14 @@
+{
+  "appId": "com.Ecommerce.app",
+  "appName": "e-commerce",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -40,6 +40,13 @@
         </div>
 
       </div>
+
+      <div *ngIf="cart.length == 0"
+           class="col-sm-12  justify-content-md-center product-item alert alert-danger" >
+        <div class="p-d-flex p-ai-center p-jc-between">
+          You have {{  cart.length }} items in your Wishlist.
+        </div>
+      </div>
       <div class="col-sm-12  justify-content-md-center product-item" >
         <div class="p-d-flex p-ai-center p-jc-between">
           In total there are {{  cart.length }} products.

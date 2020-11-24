@@ -1,6 +1,8 @@
 <div class="parent1">
   <app-navbar></app-navbar>
 </div>
-<router-outlet></router-outlet>
+
+
+<router-outlet (activate)="onActivate($event)"></router-outlet>
 
 <app-footer></app-footer>

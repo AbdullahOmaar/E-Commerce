@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SelectItem} from 'primeng/api';
+import {MenuItem, SelectItem} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import {Good} from '../../interface/good';
 import {GoodsService} from '../../services/goods.service';
@@ -25,7 +25,14 @@ export class ShopComponent implements OnInit {
 
   totalRecords: number;
 
-  myproduct: any
+  myproduct: any;
+
+  items: MenuItem[];
+
+  val1: number
+
+  rangeValues: number[] = [0,1000];
+
 
 
 
@@ -113,5 +120,10 @@ export class ShopComponent implements OnInit {
     this.ngOnInit()
     console.log(this.products)
     // window.location.reload();
+  }
+
+  selectCategory(categoriesName){
+    this.gs.setselectCategory(categoriesName);
+    this.ngOnInit()
   }
 }

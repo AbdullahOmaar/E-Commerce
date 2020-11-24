@@ -14,6 +14,8 @@
   .product-name {
     font-size: 1.5rem;
     font-weight: 700;
+    max-height: 38px;
+    overflow: hidden;
   }
 
   .product-description {

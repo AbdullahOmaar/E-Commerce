@@ -15,7 +15,11 @@ export class AppComponent {
   }
   ngOnInit(){
     AOS.init()
-
   }
 
+  onActivate(event) {
+    window.scrollTo({ top: 0});
+    // document.body.scrollTop = 0;
+    //  document.querySelector('body').scrollTo(0,0)
+  }
 }

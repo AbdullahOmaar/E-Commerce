@@ -61,6 +61,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { MainSliderComponent } from './component/main-slider/main-slider.component';
 import {TooltipModule} from "primeng/tooltip";
+import {VirtualScrollerModule} from "primeng/virtualscroller";
 
 
 @NgModule({
@@ -141,7 +142,9 @@ import {TooltipModule} from "primeng/tooltip";
     OrderListModule,
     InputNumberModule,
     TooltipModule,
-    AccordionModule
+    AccordionModule,
+
+
 
 
   ],

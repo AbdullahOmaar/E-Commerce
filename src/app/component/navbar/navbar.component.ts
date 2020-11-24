@@ -113,12 +113,8 @@ export class NavbarComponent implements OnInit {
 
   // coll categories
 
-  categories :any
-  selectCategory(good){
-    this.categories = good
-    this.gs.setselectCategory(this.categories);
-    this.shopCom.getData()
-    this.router.navigate(['shop'])
+  selectCategory(categoriesName){
+    this.shopCom.selectCategory(categoriesName );
   }
 
 }

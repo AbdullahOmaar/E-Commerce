@@ -10,12 +10,12 @@
   </div>
 </div>
 <br><br>
-<div class="container">
-<div class="row no-gutters ">
-<div class="col-10 order-last ">
+<div class="body">
+<div class="row shopCom justify-content-between ">
+<div class="col order-last ">
   <div class="shop  ">
   <p-dataView #dv [value]="products" [paginator]="true"
-              [rows]="16" filterBy="name"
+              [rows]="9" filterBy="name"
               [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
     <ng-template pTemplate="header">
       <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between header">
@@ -30,7 +30,7 @@
       </div>
     </ng-template>
     <ng-template let-product pTemplate="listItem">
-      <div class="p-col-12">
+      <div class="p-col-12 ">
         <div class="product-list-item">
           <img [src]="'' + product.photoUrl" [alt]="product.name"/>
           <div class="product-list-detail">
@@ -48,13 +48,11 @@
       </div>
     </ng-template>
     <ng-template let-product pTemplate="gridItem" >
-      <div class="p-col-10 p-md-4 productCart "  data-aos="zoom-in"
-                                                 data-aos-easing="linear"
-                                                 data-aos-duration="600">
-        <div class="product-grid-item card" >
-          <div class="product-grid-item-top">
+      <div class="p-col-10 p-md-4 productCart " >
+        <div class="product-grid-item card " >
+          <div class="product-grid-item-top ">
             <div class="inventoryStatus">
-              <span class="badge badge-pill badge-primary">{{product.status}}</span>
+              <span class="badge badge-pill badge-primary animate__animated animate__bounceIn ">{{product.status}}</span>
               <span class="badge badge-pill badge-danger m-1" *ngIf="product.discount">-{{product.discount}}%</span>
               <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
             </div>
@@ -84,23 +82,92 @@
   </div>
 </div>
 <!--Filter -->
-<div class="col-2 col-md-2 order-first " >
-  <div class="filter">
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
-  <p>ssssssss</p>
+<div class="col-3 col-md-3 order-first  d-none d-lg-block   " >
+  <div class="filterAll">
+  <div class="filter ">
+      <div class="card-header ">
+        Product Categories
+      </div>
+    <div  class="p-text-nowrap p-text-truncate card-body ">
+      <a class="p-text-nowrap p-text-truncate" href="#" routerLink="/shop" (click)="selectCategory('Men\'s Fashion')"> <p class="fa fa-male " ></p>  Men's Fashion</a>
+      <a class="p-text-nowrap p-text-truncate" href="#" routerLink="/shop" (click)="selectCategory('Women\'s Fashion')"> <p class="fa fa-female"></p> Women's Fashion</a>
+      <a class="p-text-nowrap p-text-truncate" href="#" routerLink="/shop" (click)="selectCategory('Kid\'s Fashion')"> <p class="fa fa-child "></p> Kid's Fashion</a>
+      <a class="p-text-nowrap p-text-truncate" href="#" routerLink="/shop" (click)="selectCategory('Bags')"> <p class="fa fa-shopping-bag "></p> Bags</a>
+      <a class="p-text-nowrap p-text-truncate" href="#" routerLink="/shop" (click)="selectCategory('Sports & Fitness')"> <p class="fa fa-soccer-ball-o"></p> Sports & Fitness</a>
+    </div>
 </div>
+  <div class="filter ">
+    <div class="card-header ">
+      Featured
+    </div>
+    <div  class="p-text-nowrap p-text-truncate card-body ">
+      <h5>Range: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+      <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>    </div>
+    <br>
+
+  </div>
+    <div class="filter ">
+      <div class="card-header ">
+        Featured
+      </div>
+      <div  class="p-text-nowrap p-text-truncate card-body ">
+        <p-rating [(ngModel)]="val1"></p-rating>
+      </div>
+      <br>
+
+    </div>
+
+  <div class="filter ">
+    <div class="card-header ">
+      Featured
+    </div>
+    <div  class="p-text-nowrap p-text-truncate card-body  ">
+      <div class="row justify-content-around">
+        <div class="col-2  my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-white text-dark"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-dark text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-secondary text-dark"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-info text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-warning text-dark"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-danger text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-success text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-secondary text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded bg-primary text-white"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-danger"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-secondary"></button>
+        </div>
+        <div class="col-2 my-3">
+          <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-help"></button>
+        </div>
+      </div>
+      <br>
+  </div>
 </div>
+
 <!---->
 
 
+</div>
 </div>
 </div>
 <!--fliter-->

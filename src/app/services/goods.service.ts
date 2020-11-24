@@ -34,7 +34,8 @@ export class GoodsService {
   // share  Select categories
   setselectCategory(categories){
     localStorage.setItem('selectCategory', JSON.stringify(categories));
-    console.log(JSON.parse(localStorage.getItem('selectCategory')))
+    console.log(JSON.parse(localStorage.getItem('selectCategory')));
+    this.gitSelectedCategory()
   }
   // endSelect categories
 

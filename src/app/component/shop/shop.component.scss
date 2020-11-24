@@ -11,7 +11,17 @@
     //width: 100%;
   }
 
+  .body{
+    width: 90%;
+    margin: auto;
+  }
 
+
+
+  .shopCom{
+  margin: auto;
+  width: 90%;
+}
   .headar{
     align-items: center;
     text-align: center;
@@ -170,6 +180,35 @@
   border-radius: 30px;
 }
 
+.filterAll{
+  position: sticky;
+  top: 10%;
+  button: 50%;
+
+  .filter{
+
+  margin-bottom: 15px;
+  box-shadow:0 16px 40px rgba(0,0,0,0.12);
+  border:0;
+  border-radius: 20px;
+  background-color: white;
+  .card-header{
+    border-radius: 20px 20px 0px 0px;
+  }
+  a {
+    //margin: 3px;
+    display: block;
+    font-size: 1em;
+    font-weight: 800;
+    color: #788d9e;
+  }
+  a:hover {
+    color: #2b4f6d;
+    text-decoration: #0b2e13;
+  }
+
+}
+}
 @media screen and (max-width: 576px) {
   :host ::ng-deep .product-list-item {
     flex-direction: column;
@@ -212,10 +251,7 @@
   }
 }
 
-.filter{
-  position: sticky;
-  top: 20%;
-}
+
 
 .parent4 {
   position: fixed;
