@@ -76,3 +76,4 @@ export class CardComponent implements OnInit {
     this.wl.addToWishlist(wishlistData).then(res => { console.log(res)})
   }
 }
+
