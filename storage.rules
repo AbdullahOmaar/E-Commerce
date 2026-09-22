@@ -1,0 +1,15 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function admin() { return request.auth != null && ('admin' in request.auth.token) && request.auth.token.admin == true; }
+    function catalogAsset(folder) { return folder == 'goods' || folder == 'category'; }
+    match /{folder}/{fileName} {
+      allow read: if catalogAsset(folder);
+      allow create, update: if catalogAsset(folder) && admin()
+        && request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp|gif|avif)');
+      allow delete: if catalogAsset(folder) && admin();
+    }
+    match /{path=**} { allow read, write: if false; }
+  }
+}
