@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:production": "ng build --configuration production",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
@@ -22,31 +24,16 @@
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
     "@capacitor/android": "^2.4.3",
-    "@capacitor/cli": "^2.4.3",
     "@capacitor/core": "^2.4.3",
-    "@fortawesome/angular-fontawesome": "^0.7.0",
-    "@fortawesome/fontawesome": "^1.1.8",
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.2",
-    "chokidar": "^3.4.2",
-    "cordova-create": "^3.0.0",
-    "core-js": "^2.6.5",
     "firebase": "^7.22.1",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.24.80",
-    "jquery": "^3.5.1",
-    "mobile": "0.0.1",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primeng": "^10.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "rxjs": "~6.6.3",
-    "save": "^2.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
@@ -71,6 +58,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.3",
-    "webpack-bundle-analyzer": "^3.9.0"
+    "webpack-bundle-analyzer": "^3.9.0",
+    "@capacitor/cli": "^2.4.3"
   }
 }
