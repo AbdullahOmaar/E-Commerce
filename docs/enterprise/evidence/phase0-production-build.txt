@@ -1,0 +1,125 @@
+
+Compiling @angular/core : es2015 as esm2015
+
+Compiling @angular/common : es2015 as esm2015
+
+Compiling @angular/platform-browser : es2015 as esm2015
+
+Compiling @angular/platform-browser-dynamic : es2015 as esm2015
+
+Compiling @angular/animations : es2015 as esm2015
+
+Compiling @angular/router : es2015 as esm2015
+
+Compiling primeng/api : es2015 as esm2015
+
+Compiling primeng/accordion : es2015 as esm2015
+
+Compiling primeng/dom : es2015 as esm2015
+
+Compiling primeng/ripple : es2015 as esm2015
+
+Compiling primeng/menubar : es2015 as esm2015
+
+Compiling @angular/animations/browser : es2015 as esm2015
+
+Compiling @angular/platform-browser/animations : es2015 as esm2015
+
+Compiling @angular/forms : es2015 as esm2015
+
+Compiling primeng/inputtext : es2015 as esm2015
+
+Compiling primeng/button : es2015 as esm2015
+
+Compiling @angular/fire : es2015 as esm2015
+
+Compiling @angular/fire/firestore : es2015 as esm2015
+
+Compiling @angular/fire/auth : es2015 as esm2015
+
+Compiling @angular/fire/storage : es2015 as esm2015
+
+Compiling primeng/utils : es2015 as esm2015
+
+Compiling primeng/carousel : es2015 as esm2015
+
+Compiling primeng/toast : es2015 as esm2015
+
+Compiling @angular/cdk/platform : es2015 as esm2015
+
+Compiling @angular/cdk/bidi : es2015 as esm2015
+
+Compiling @angular/cdk/collections : es2015 as esm2015
+
+Compiling @angular/cdk/scrolling : es2015 as esm2015
+
+Compiling primeng/tooltip : es2015 as esm2015
+
+Compiling primeng/dropdown : es2015 as esm2015
+
+Compiling primeng/paginator : es2015 as esm2015
+
+Compiling primeng/dataview : es2015 as esm2015
+
+Compiling primeng/panel : es2015 as esm2015
+
+Compiling primeng/focustrap : es2015 as esm2015
+
+Compiling primeng/dialog : es2015 as esm2015
+
+Compiling primeng/rating : es2015 as esm2015
+
+Compiling @angular/common/http : es2015 as esm2015
+
+Compiling primeng/table : es2015 as esm2015
+
+Compiling primeng/calendar : es2015 as esm2015
+
+Compiling primeng/slider : es2015 as esm2015
+
+Compiling primeng/progressbar : es2015 as esm2015
+
+Compiling primeng/contextmenu : es2015 as esm2015
+
+Compiling primeng/multiselect : es2015 as esm2015
+
+Compiling primeng/confirmdialog : es2015 as esm2015
+
+Compiling primeng/messages : es2015 as esm2015
+
+Compiling primeng/fileupload : es2015 as esm2015
+
+Compiling primeng/overlaypanel : es2015 as esm2015
+
+Compiling primeng/panelmenu : es2015 as esm2015
+
+Compiling primeng/togglebutton : es2015 as esm2015
+
+Compiling primeng/orderlist : es2015 as esm2015
+
+Compiling primeng/inputnumber : es2015 as esm2015
+Generating ES5 bundles for differential loading...
+ES5 bundle generation complete.
+
+chunk {0} runtime-es2015.66c79b9d36e7169e27b0.js (runtime) 1.45 kB [entry] [rendered]
+chunk {0} runtime-es5.66c79b9d36e7169e27b0.js (runtime) 1.45 kB [entry] [rendered]
+chunk {2} polyfills-es2015.a69ac1c9ffe235f90f3d.js (polyfills) 36.8 kB [initial] [rendered]
+chunk {3} polyfills-es5.0a05430ab755720efeaf.js (polyfills-es5) 130 kB [initial] [rendered]
+chunk {1} main-es2015.c381602a56e300311b8b.js (main) 1.34 MB [initial] [rendered]
+chunk {1} main-es5.c381602a56e300311b8b.js (main) 1.44 MB [initial] [rendered]
+chunk {4} styles.4409bf36e5b0025f05c0.css (styles) 417 kB [initial] [rendered]
+chunk {scripts} scripts.8c895b14ac5afb48e4f9.js (scripts) 14.1 kB [entry] [rendered]
+Date: 2026-09-22T16:20:09.489Z - Hash: 9d8d023927bf25681161 - Time: 176210ms
+
+WARNING in <workspace>/E-Commerce/node_modules/firebase/auth/dist/index.esm.js depends on '@firebase/auth'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+WARNING in <workspace>/E-Commerce/node_modules/@angular/fire/__ivy_ngcc__/es2015/firebase.app.module.js depends on 'firebase/app'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+WARNING in <workspace>/E-Commerce/node_modules/firebase/firestore/dist/index.esm.js depends on '@firebase/firestore'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+WARNING in budgets: bundle initial-es2015 exceeded maximum budget. Budget 1.8 MB was not met by 2.42 kB with a total of 1.8 MB.
+
+WARNING in budgets: bundle initial-es5 exceeded maximum budget. Budget 1.8 MB was not met by 198 kB with a total of 1.99 MB.

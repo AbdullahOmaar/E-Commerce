@@ -1,0 +1,20 @@
+
+Compiling @angular/core/testing : es2015 as esm2015
+
+Compiling @angular/platform-browser/testing : es2015 as esm2015
+
+Compiling @angular/compiler/testing : es2015 as esm2015
+
+Compiling @angular/platform-browser-dynamic/testing : es2015 as esm2015
+
+Compiling @angular/common/testing : es2015 as esm2015
+
+Compiling @angular/router/testing : es2015 as esm2015
+23 09 2026 00:00:56.305:INFO [karma-server]: Karma v5.0.9 server started at http://0.0.0.0:9876/
+23 09 2026 00:00:56.306:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+23 09 2026 00:00:56.308:INFO [launcher]: Starting browser ChromeHeadless
+23 09 2026 00:01:01.447:INFO [Chrome Headless 133.0.6943.0 (Linux x86_64)]: Connected on socket kP4UgMOAgueECtodAAAA with id 27067885
+Chrome Headless 133.0.6943.0 (Linux x86_64): Executed 34 of 34 SUCCESS (0 secs / 0.494 secs)
+Chrome Headless 133.0.6943.0 (Linux x86_64): Executed 34 of 34 SUCCESS (0.586 secs / 0.494 secs)
+TOTAL: 34 SUCCESS
+TOTAL: 34 SUCCESS
