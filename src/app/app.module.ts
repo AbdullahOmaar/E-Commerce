@@ -1,10 +1,10 @@
+import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 import { LoginComponent } from './component/login/login.component';
@@ -15,7 +15,6 @@ import { AdminComponent } from './component/admin/admin.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import { FooterComponent } from './component/footer/footer.component';                  //api
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import {MenubarModule} from 'primeng/menubar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
@@ -25,7 +24,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //firbase
 import { AngularFireModule} from '@angular/fire';
-import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import {CarouselModule} from 'primeng/carousel';
@@ -39,7 +38,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {DialogModule} from 'primeng/dialog';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import {CalendarModule} from 'primeng/calendar';
 import {SliderModule} from 'primeng/slider';
@@ -61,7 +60,6 @@ import {InputNumberModule} from "primeng/inputnumber";
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { MainSliderComponent } from './component/main-slider/main-slider.component';
 import {TooltipModule} from "primeng/tooltip";
-import {VirtualScrollerModule} from "primeng/virtualscroller";
 
 
 @NgModule({
@@ -89,28 +87,15 @@ import {VirtualScrollerModule} from "primeng/virtualscroller";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
+
     AccordionModule,
-    FontAwesomeModule,
+
     MenubarModule,
-    BrowserModule,
     BrowserAnimationsModule,
-    MenubarModule,
     InputTextModule,
     ButtonModule,
     FormsModule,
-    AngularFireModule.initializeApp(
-      {
-        apiKey: "AIzaSyCecLlLG1j4k6mH9dlUM-xKA57p77iE3mE",
-        authDomain: "e-commerce-v01.firebaseapp.com",
-        databaseURL: "https://e-commerce-v01.firebaseio.com",
-        projectId: "e-commerce-v01",
-        storageBucket: "e-commerce-v01.appspot.com",
-        messagingSenderId: "175516162427",
-        appId: "1:175516162427:web:118c880c344f02769545de",
-        measurementId: "G-TKMCMYY69S"
-      }
-    ),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -123,9 +108,6 @@ import {VirtualScrollerModule} from "primeng/virtualscroller";
     RatingModule,
     RippleModule,
     HttpClientModule,
-    TableModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     TableModule,
     CalendarModule,
     SliderModule,
@@ -142,14 +124,12 @@ import {VirtualScrollerModule} from "primeng/virtualscroller";
     OrderListModule,
     InputNumberModule,
     TooltipModule,
-    AccordionModule,
-
 
 
 
   ],
   bootstrap: [AppComponent],
-  providers: [HttpClient,MessageService,ConfirmationService],
+  providers: [MessageService, ConfirmationService],
 
 
 })
