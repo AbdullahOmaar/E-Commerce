@@ -1,72 +1,51 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Good} from '../../interface/good';
-import {CartService} from '../../services/cart.service';
-import {GoodsService} from '../../services/goods.service';
-import {AuthService} from '../../services/auth.service';
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Good } from '../../interface/good';
+import { CartService } from '../../services/cart.service';
+import { GoodsService } from '../../services/goods.service';
+import { cartEstimates, clampQuantity } from '../../features/cart/domain/cart-estimates';
 
-@Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+@Component({ selector: 'app-cart', templateUrl: './cart.component.html', styleUrls: ['./cart.component.scss'] })
+export class CartComponent implements OnInit, OnDestroy {
+  cart: Good[] = [];
+  loading = true;
+  error = '';
+  readonly pending = new Set<string>();
+  private readonly destroyed$ = new Subject<void>();
 
-})
-export class CartComponent implements OnInit {
+  get estimates(): ReturnType<typeof cartEstimates> { return cartEstimates(this.cart); }
 
-  cart: Good[] = []
-
-  lengthItem : number
-
-  Subtotal: any
-
-  Shipping: number = 30
-
-
-  constructor(private cs: CartService,
-              private as: AuthService,
-              private gs: GoodsService,
-              private router: Router) {
+  constructor(private cs: CartService, private gs: GoodsService, private router: Router) {}
+  ngOnInit(): void {
+    this.cs.getCart().pipe(takeUntil(this.destroyed$)).subscribe({
+      next: cart => { this.cart = cart; this.loading = false; },
+      error: () => { this.loading = false; this.error = 'Unable to load your cart. Please reload and try again.'; }
+    });
   }
-
-
-ngOnInit(): void {
-
-    this.cs.getCart().subscribe(cart => {
-      this.cart = cart.map(shopping =>{
-        return {
-          id: shopping.payload.doc.id,
-          ...shopping.payload.doc.data() as GoodsService
-        }
-      })
-    })
+  async delete(index: number): Promise<void> {
+    const line = this.cart[index];
+    if (!line || this.pending.has(line.id)) { return; }
+    this.error = '';
+    this.pending.add(line.id);
+    try { await this.cs.delete(line.id); } catch { this.error = 'Unable to remove this item. Please try again.'; }
+    finally { this.pending.delete(line.id); }
   }
-
-
-
-
-
-  delete(index) {
-    return this.cs.delete(this.cart[index].id)
-    console.log(this.cart[index].id,'ss')
-
+  async update(index: number, value: number): Promise<void> {
+    const line = this.cart[index];
+    if (!line || this.pending.has(line.id)) { return; }
+    this.error = '';
+    this.pending.add(line.id);
+    const updated = { ...line, amount: clampQuantity(value) };
+    this.cart = this.cart.map(item => item === line ? updated : item);
+    try { await this.cs.update(line.id, updated.amount); }
+    catch {
+      this.cart = this.cart.map(item => item === updated ? line : item);
+      this.error = 'Quantity was not saved. Please try again.';
+    } finally { this.pending.delete(line.id); }
   }
-
-  update(index) {
-    return this.cs.update(this.cart[index].id, this.cart[index].amount)
-    console.log(this.cart[index].id)
-  }
-
-
-  myproduct: any
-  setData(product) {
-    this.myproduct = product
-    this.gs.setData(this.myproduct);
-    console.log(this.myproduct )
-    this.router.navigate(['good'])
-  }
+  setData(product: Good): void { this.gs.setData(product); this.router.navigate(['/good']); }
+  trackItem(index: number, product: Good): string { return product.id; }
+  ngOnDestroy(): void { this.destroyed$.next(); this.destroyed$.complete(); }
 }
-
-
-
-
