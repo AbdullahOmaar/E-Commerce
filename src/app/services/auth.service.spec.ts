@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { AuthService } from './auth.service';
 
 describe('AuthService identity regression', () => {
@@ -11,7 +11,7 @@ describe('AuthService identity regression', () => {
     localStorage.setItem('user', JSON.stringify('stale-user'));
     state = new BehaviorSubject<firebase.User>(null);
     TestBed.configureTestingModule({ providers: [
-      { provide: AngularFireAuth, useValue: { user: state, auth: {} } }
+      { provide: AngularFireAuth, useValue: { user: state, idTokenResult: of(null), auth: {} } }
     ] });
     service = TestBed.inject(AuthService);
   });

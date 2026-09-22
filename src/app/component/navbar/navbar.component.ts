@@ -42,19 +42,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() : void{
-    this.as.user.subscribe(user => {
-        if (user) {
-          this.isUser = true
-          this.as.userId = user.uid
-          localStorage.setItem('user' , JSON.stringify(this.as.userId))
-        } else {
-          this.isUser = false
-          this.as.userId = ''
-          localStorage.removeItem('user')
-
-        }
-      }
-    )
+    this.as.user.subscribe(user => this.isUser = !!user);
     //getWishlist
     this.wl.getWishlist().subscribe(cart => {
       this.wishlist = cart.map(shopping =>{

@@ -23,7 +23,7 @@ export class GoodComponent implements OnInit {
   category?:string;
   image?:string;
   rating?:number;
-  country?: Country;
+  country?: Country | string;
   company?: string;
   date?: Date;
   status?: string;
@@ -36,9 +36,9 @@ export class GoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.good = this.gs.getData()
-    console.log(this.good)
     if (!this.gs.getData()){
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
+      return;
     }
     this.name = this.good.name
     this.status = this.good.status
