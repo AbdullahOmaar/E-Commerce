@@ -8,7 +8,7 @@
 <!--        <input type="number" class="form-control" name="price" ngModel placeholder="Price" required>-->
 <!--        <input type="text" class="form-control" name="description" ngModel placeholder="description" required>-->
 <!--        <input #image type="file" ngModel name="image" required> <br>-->
-<!--        <input type="submit" value="add" class="btn btn-primary" [disabled]="f.invalid">-->
+<!--        <input type="submit" [disabled]="saving || f.invalid" value="add" class="btn btn-primary" [disabled]="f.invalid">-->
 <!--      </form>-->
 <!--    </div>-->
 <!--</div>-->
@@ -121,7 +121,7 @@
       </td>
       <td>
         <span class="p-column-title"></span>
-        {{product.date.seconds * 1000 | date:'dd-MM-yyyy'}}
+        {{product.date | date:'dd-MM-yyyy'}}
       </td>
       <td>
         <span class="p-column-title"></span>
@@ -157,7 +157,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="inputprice4">price</label>
-          <input type="text" class="form-control" id="inputprice4" placeholder="price"
+          <input type="number" min="0" step="0.01" class="form-control" id="inputprice4" placeholder="price"
                  name="price" ngModel required>
         </div>
       </div>
@@ -206,12 +206,12 @@
 
       <div class="form-group">
         <label for="inputimage2"> image</label>
-        <input type="text" class="form-control" id="inputimage2" placeholder="image"
+        <input class="form-control" id="inputimage2" placeholder="image"
                #image type="file" ngModel  name="image" required>
       </div>
       <div>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" style="margin-left: 65%"></button>
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " (click)="hideDialog()" ></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" [disabled]="saving || f.invalid" style="margin-left: 65%"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " type="button" (click)="hideDialog()" ></button>
       </div>
     </form>
   </ng-template>
@@ -220,7 +220,7 @@
 <!-- edit -->
 <p-dialog [(visible)]="editDialog" [style]="{width: '850px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content"   >
-    <form #f="ngForm" (ngSubmit)="update(f)" index as i  >
+    <form #f="ngForm" (ngSubmit)="update(f)"   >
       <div class="form-row" >
         <div class="form-group col-6">
           <label for="inputName4">Name</label>
@@ -229,7 +229,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="inputprice4">price</label>
-          <input type="text" class="form-control" id="inputprice4" placeholder="price"
+          <input type="number" min="0" step="0.01" class="form-control" id="inputprice4" placeholder="price"
                  name="price" [(ngModel)]="editProduct.price" required>
         </div>
       </div>
@@ -239,7 +239,7 @@
           <label for="inputDate">Date</label>
           <p-calendar id="inputDate"
                       [showButtonBar]="true" styleClass="" placeholder="Registration Date" [readonlyInput]="true" dateFormat="dd-mm-yy"
-                      [(ngModel)]="editProduct.dateFormat " name="date">
+                      [(ngModel)]="editProduct.date" name="date">
           </p-calendar>
 
         </div>
@@ -279,12 +279,12 @@
 
       <div class="form-group">
         <label for="inputimage2"> image</label>
-        <input type="text" class="form-control" id="inputimage2" placeholder="image"
-               #image type="file" [(ngModel)]="editProduct.image"  name="image" required>
+        <input class="form-control" id="inputimage2" placeholder="image"
+               #editImage type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif">
       </div>
       <div>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" style="margin-left: 65%"></button>
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " (click)="hideDialog()" ></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text col-2" type="submit" [disabled]="saving || f.invalid" style="margin-left: 65%"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text col-2  " type="button" (click)="hideDialog()" ></button>
       </div>
     </form>
   </ng-template>
@@ -293,12 +293,12 @@
 <!-- confirmDialog -->
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
-<p-toast></p-toast>
+
 
 
 <!-- Add Category Dialog -->
 <p-dialog header="Add New Category" [(visible)]="AddCategorydisplay" [style]="{width: '50vw'}" [baseZIndex]="10000">
-  <form #f="ngForm" (ngSubmit)="AddNewCategory(f,$event.files)" index as i  >
+  <form #f="ngForm" (ngSubmit)="AddNewCategory(f)"   >
     <div class="form-row" >
       <div class="form-group col-6">
         <label for="inputName4">Name</label>
@@ -313,7 +313,7 @@
     </div>
 
     <div class="">
-        <p-fileUpload  [auto]="true"
+        <p-fileUpload  [auto]="false" [showUploadButton]="false"
                       (onSelect)="onSelectImage($event.files)"
                       accept="image/*" maxFileSize="1000000">
           <ng-template pTemplate="content">
@@ -324,7 +324,7 @@
         </p-fileUpload>
       </div>
     <p-footer style="margin-left: 75%">
-    <p-button icon="pi pi-check" type="submit" label="Yes" styleClass="p-button-text"  ></p-button>
+    <p-button icon="pi pi-check" type="submit" [disabled]="saving || f.invalid" label="Yes" styleClass="p-button-text"  ></p-button>
     <p-button icon="pi pi-times" (click)="AddCategorydisplay=false" label="No" styleClass="p-button-text"></p-button>
     </p-footer>
   </form>
@@ -353,4 +353,3 @@
 </p-overlayPanel>
 
 </div>
-
