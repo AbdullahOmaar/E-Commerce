@@ -9,9 +9,9 @@ import {AdminComponent} from './component/admin/admin.component';
 import {SignupComponent} from './component/signup/signup.component';
 import {CartComponent} from './component/cart/cart.component';
 import {ShopComponent} from './component/shop/shop.component';
-import {FilterComponent} from "./component/filter/filter.component";
-import {GoodComponent} from "./component/good/good.component";
-import {WishlistComponent} from "./component/wishlist/wishlist.component";
+import {FilterComponent} from './component/filter/filter.component';
+import {GoodComponent} from './component/good/good.component';
+import {WishlistComponent} from './component/wishlist/wishlist.component';
 
 
 export const routes: Routes = [
@@ -21,7 +21,7 @@ export const routes: Routes = [
   { path: 'login' , component: LoginComponent },
   { path: 'signup' , component: SignupComponent },
   { path: 'cart' , component: CartComponent, canActivate: [AuthGuard] },
-  { path: 'shop' , component: ShopComponent,},
+  { path: 'shop' , component: ShopComponent, },
   { path: 'filter' , component: FilterComponent},
   { path: 'good' , component: GoodComponent},
   { path: 'wishlist' , component: WishlistComponent, canActivate: [AuthGuard]},
