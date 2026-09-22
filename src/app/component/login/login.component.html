@@ -10,7 +10,7 @@
 <div class="container justify-content-center">
 <form class=" d-flex flex-column " #f="ngForm" (ngSubmit)="login(f)">
 
-  <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+  <div role="alert" class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
 
 
   <p class="h4 mb-4">Sign in</p>
@@ -19,7 +19,9 @@
   <input name="email"
          ngModel
          required
-         type="text"
+         type="email"
+         email
+         autocomplete="email"
          id="email"
          class="form-control mb-4"
          placeholder="email"
@@ -39,7 +41,7 @@
 
   </div>
   <!-- Sign in button -->
-  <button [disabled]="f.invalid"
+  <button [disabled]="f.invalid || submitting"
           class="btn btn-info btn-block my-4"
           type="submit" value="login">
     <i class="fa fa-cog fa-spin fa fa-fw " style="font-size: 20px"></i>
