@@ -1,6 +1,7 @@
+import { AppErrorHandler } from './core/errors/feedback.service';
 import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +13,8 @@ import { SignupComponent } from './component/signup/signup.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AdminComponent } from './component/admin/admin.component';
 
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import { FooterComponent } from './component/footer/footer.component';                  //api
+import {AccordionModule} from 'primeng/accordion';     // accordion and accordion tab
+import { FooterComponent } from './component/footer/footer.component';                  // api
 
 import {MenubarModule} from 'primeng/menubar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -22,7 +23,7 @@ import {ButtonModule} from 'primeng/button';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-//firbase
+// firbase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -52,14 +53,14 @@ import {FileUploadModule} from 'primeng/fileupload';
 import { OverlayPanelModule} from 'primeng/overlaypanel';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { FilterComponent } from './component/filter/filter.component';
-import {ToggleButtonModule} from "primeng/togglebutton";
-import {NavbarComponent} from "./component/navbar/navbar.component";
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import {NavbarComponent} from './component/navbar/navbar.component';
 import { GoodComponent } from './component/good/good.component';
-import {OrderListModule} from "primeng/orderlist";
-import {InputNumberModule} from "primeng/inputnumber";
+import {OrderListModule} from 'primeng/orderlist';
+import {InputNumberModule} from 'primeng/inputnumber';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { MainSliderComponent } from './component/main-slider/main-slider.component';
-import {TooltipModule} from "primeng/tooltip";
+import {TooltipModule} from 'primeng/tooltip';
 
 
 @NgModule({
@@ -129,7 +130,7 @@ import {TooltipModule} from "primeng/tooltip";
 
   ],
   bootstrap: [AppComponent],
-  providers: [MessageService, ConfirmationService],
+  providers: [MessageService, ConfirmationService, { provide: ErrorHandler, useClass: AppErrorHandler }],
 
 
 })
