@@ -55,25 +55,24 @@
   <label class="form__label"><i>Phone</i></label>
   <input  name="phone"
           ngModel
-          id="numbers" pattern="[0-9.]+" type="phone"
-          onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+          id="numbers" pattern="[0-9.]+" type="tel"
           required
           class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
 
   <!-- Sign up button -->
   <button class="btn btn-info my-4 btn-block"
-          [disabled]="f.invalid"
+          [disabled]="f.invalid || submitting"
           type="submit">
     <i class="fa fa-cog fa-spin fa fa-fw " style="font-size: 20px"></i>
     Sign Up
   </button>
 
   <p >Member?
-    <a href="" [routerLink]="['/']"> login</a>
+    <a href="" routerLink="/login"> login</a>
   </p>
 
 </form>
- <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+ <div role="alert" class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
 
 </div>

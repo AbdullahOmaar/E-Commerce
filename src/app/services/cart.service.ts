@@ -1,38 +1,40 @@
+import { mapProducts } from '../features/catalog/data-access/product.mapper';
 import { Injectable } from '@angular/core';
-import {Good} from '../interface/good';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {AuthService} from './auth.service';
-import {AngularFireAuth} from "@angular/fire/auth";
-import {Observable} from "rxjs";
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs/operators';
+import { Good } from '../interface/good';
+import { clampQuantity } from '../features/cart/domain/cart-estimates';
+import { AuthService } from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class CartService {
+  constructor(private fs: AngularFirestore, private auth: AuthService) {}
 
-  user: Observable<firebase.User>
-  userId: string
-
-  constructor( private fs: AngularFirestore, private as: AuthService, private afAuth: AngularFireAuth) {
-    // this.user = afAuth.user
-    this.userId = JSON.parse(localStorage.getItem('user')) ;
+  async addToCart(data: Good): Promise<unknown> {
+    const uid = await this.auth.requireUserId();
+    return this.fs.collection<Good>(`users/${uid}/cart`).add({ ...data, amount: clampQuantity(data.amount) });
   }
 
-  addToCart(data: Good){
-    return this.fs.collection(`users/${this.as.userId}/cart`).add(data)
+  getCart(): Observable<Good[]> {
+    return this.auth.userId$.pipe(switchMap(uid => uid
+      ? this.fs.collection<Good>(`users/${uid}/cart`).snapshotChanges().pipe(map(mapProducts), startWith([]))
+      : of([])));
   }
 
-  getCart(){
-    return this.fs.collection(`users/${this.as.userId}/cart`).snapshotChanges()
+  async delete(id: string): Promise<void> {
+    const uid = await this.auth.requireUserId();
+    this.validateId(id);
+    return this.fs.doc(`users/${uid}/cart/${id}`).delete();
   }
 
-  delete(id){
-    return this.fs.doc(`users/${this.userId}/cart/${id}`).delete()
+  async update(id: string, amount: number): Promise<void> {
+    const uid = await this.auth.requireUserId();
+    this.validateId(id);
+    return this.fs.doc(`users/${uid}/cart/${id}`).update({ amount: clampQuantity(amount) });
   }
 
-  update(id , amount){
-    return this.fs.doc(`users/${this.userId}/cart/${id}`).update({
-      amount
-    })
+  private validateId(id: string): void {
+    if (!id || id.includes('/')) { throw new Error('Invalid cart item.'); }
   }
 }
