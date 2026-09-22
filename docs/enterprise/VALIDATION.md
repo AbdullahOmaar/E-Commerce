@@ -3,7 +3,8 @@
 Date: 2026-09-22. Base: `d0a34afed4e2c071cfa91cbb94c154c42aafda72`.
 Branch: `enterprise-upgrade/phase-0`. Application code checkpoint: `3020cfe`
 (the following documentation/asset-marker commit does not change application logic).
-All commands below were executed locally. Remote GitHub Actions has **not** run.
+All commands below were executed locally. The published source also passed GitHub
+Actions on 2026-09-22; see the publication evidence below.
 
 | Gate | Baseline | Phase 0 |
 | --- | --- | --- |
@@ -14,7 +15,8 @@ All commands below were executed locally. Remote GitHub Actions has **not** run.
 | Firestore + Storage emulator tests | None | 7 passed / 0 failed, many positive/negative assertions |
 | Clean dependency installation | 3,004 packages, npm 11 ignoring scripts | 1,754 packages, npm 6 ignoring scripts |
 | Git whitespace check | Not a baseline gate | PASS |
-| Remote branch / Draft PR | Not applicable | BLOCKED by write access, no PR created |
+| Remote branch / Draft PR | Not applicable | Published, Draft PR [#1](https://github.com/AbdullahOmaar/E-Commerce/pull/1), unmerged |
+| GitHub Actions | Not available | Build, lint, browser tests and security emulators PASS on published source |
 
 ## Commands and environments
 
@@ -76,7 +78,7 @@ validated. User-visible production functionality is not certified by these tests
 - Automatic hosting deployments are paused in both legacy workflows; new CI is
   validation-only with read-only repository permissions and no deployment secrets.
 
-## Publication blocker
+## Publication and remote validation
 
 Action 1: `git push -u origin enterprise-upgrade/phase-0` to
 `https://github.com/AbdullahOmaar/E-Commerce.git` failed because no terminal GitHub
@@ -87,13 +89,25 @@ HTTP **403**, `Resource not accessible by integration` (Git refs API).
 The connected account is **abdullah-omar1**; repository metadata reports `pull: true`,
 `push: false`, `admin: false`. The original `master` SHA is unchanged.
 
-Smallest owner action: grant the connected GitHub identity/integration write access
-(`Contents: write`) to `AbdullahOmaar/E-Commerce`, or reconnect the repository's owning
-account with that access. The publication path also needs permission to update workflow
-files and open pull requests; these capabilities cannot be verified until repository
-write access is restored. Do not send a token in chat.
+The blocker was resolved on 2026-09-22: the owner installed the connector for this
+repository and accepted a collaborator invitation for `abdullah-omar1`. Repository
+metadata now reports `push: true`. The existing ChatGPT account connection was retained.
 
-After access is available: verify master has not moved, push the preserved branch,
-create a **Draft** PR into `master` using DRAFT_PR.md, and inspect exact-commit CI.
-Do not merge or deploy. Begin the separate Phase 1 Angular 22 shell after the Phase 0
-handoff is published. No permanent worker or background continuation is claimed.
+The 13 commits were published through the Git Data API, with each resulting tree SHA
+checked against its original locally validated tree. Commit metadata changed, so commit
+SHAs differ; content does not. The full mapping is in `evidence/phase0-commit-map.json`.
+The original sequence is preserved on the local recovery branch and in the git bundle.
+
+- Draft PR: https://github.com/AbdullahOmaar/E-Commerce/pull/1
+- Published application checkpoint: `206f52ee6efc538d056830cde31b51d345ceb6e7`.
+- First published head: `ff5a99d9f5873ab37f9bdd5803e93ebee170cf78`.
+- Verified tree: `954adf2ba8a3d50c32e2b179cbe7ef050c570747`.
+- Passing pull-request run: https://github.com/AbdullahOmaar/E-Commerce/actions/runs/35798997792
+- Both `legacy-application` and `firebase-rules` jobs passed, including all build,
+  lint, browser test and emulator steps. Captured metadata is in
+  `evidence/phase0-github-actions.json`.
+
+This publication-evidence update changes documentation only. The PR's checks provide
+the result for its latest commit. Keep the PR Draft and require owner approval before
+merge. No merge, Firebase deployment, live data or production rules change occurred.
+Phase 1 proceeds on a separate branch with an isolated Angular 22 workspace.
