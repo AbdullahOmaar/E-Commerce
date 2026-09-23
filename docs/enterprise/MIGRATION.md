@@ -1,6 +1,7 @@
 # Decision: stabilize, then re-platform one feature at a time
 
-Date: 2026-09-22. Status: implementation direction selected; shell not yet created.
+Date: 2026-09-22. Updated: 2026-09-23. Status: isolated Angular 22 shell implemented;
+feature migration and production cutover remain pending. See PHASE_1_FOUNDATION.md.
 
 ## Evidence and decision
 
