@@ -1,10 +1,27 @@
-import { restoreCart } from './cart.codec';
-import { MAX_PERSISTED_CHARACTERS } from './cart.models';
+import { restoreCart, serializeCart } from './cart.codec';
+import { immutableLine, MAX_LINES, MAX_PERSISTED_CHARACTERS, validProduct } from './cart.models';
 
 const line = { productId: 'category:p1', name: 'Product', unitPriceMinor: 100, quantity: 2 };
 const encode = (lines: unknown[]) => JSON.stringify({ version: 1, lines });
 
 describe('untrusted persisted cart validation', () => {
+  it('round-trips a full valid cart even when JSON must escape every character', () => {
+    const lines = Array.from({ length: MAX_LINES }, (_, index) =>
+      immutableLine(
+        {
+          productId: String(index).padStart(3, '0') + '\ud800'.repeat(509),
+          name: '\u0000'.repeat(299) + 'X',
+          unitPriceMinor: 1_000_000_000,
+        },
+        99,
+      ),
+    );
+    expect(lines.every(validProduct)).toBe(true);
+    const serialized = serializeCart(lines);
+    expect(serialized.length).toBeLessThanOrEqual(MAX_PERSISTED_CHARACTERS);
+    expect(restoreCart(serialized)).toEqual({ lines, corrected: false });
+  });
+
   it.each([
     'bad json',
     'null',

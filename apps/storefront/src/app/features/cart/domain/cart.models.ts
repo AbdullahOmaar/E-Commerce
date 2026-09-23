@@ -1,7 +1,9 @@
 export const MAX_QUANTITY = 99;
 export const MAX_LINES = 100;
 export const MAX_PRICE_MINOR = 1_000_000_000;
-export const MAX_PERSISTED_CHARACTERS = 128 * 1024;
+// JSON can encode one UTF-16 code unit as six characters. Cover 100 valid lines
+// with 512-character IDs, 300-character names and their bounded numeric fields.
+export const MAX_PERSISTED_CHARACTERS = 512 * 1024;
 
 export interface CartProduct {
   readonly productId: string;

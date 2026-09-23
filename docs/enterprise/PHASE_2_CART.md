@@ -18,7 +18,7 @@ No Firebase SDK or browser storage access exists in the presentation components.
 - Versioned localStorage in `ecommerce.storefront.cart.v1`. Existing legacy storage
   and Firestore carts are untouched; no automatic account-cart merge is implied.
 - Runtime validation before restore: schema/version, types, IDs, name/price bounds,
-  integer quantities, duplicate consolidation, a line limit and a 128 Ki-character
+  integer quantities, duplicate consolidation, a line limit and a 512 Ki-character
   input limit. Invalid data is corrected/dropped with visible feedback.
 - PLATFORM_ID/isPlatformBrowser guards before reading DOCUMENT/localStorage. Server
   tests prove the browser document is never touched by the storage adapter.
@@ -57,7 +57,7 @@ default; confirm the store currency and pricing policy before trusted checkout.
 
 | Gate | Result |
 | --- | --- |
-| Modern Vitest/router tests | PASS: 45 tests across 5 files |
+| Modern Vitest/router tests | PASS: 46 tests across 5 files |
 | ESLint / template accessibility rules | PASS, zero warnings |
 | Prettier check | PASS |
 | Production build / bundle budgets | PASS |
@@ -68,12 +68,19 @@ was followed by an automatic empty-cart write (1 failed / 23 passed in the focus
 service run). The implementation now disables persistence after that read failure;
 the same assertion and subsequent in-memory edits pass without any storage write.
 
+Final review found a second persistence edge case: JSON escaping could expand a
+valid full cart beyond the original 128 Ki-character read limit. A regression test
+first failed with 492,123 serialized characters (1 failed / 9 passed in the codec
+run). The limit is now 512 Ki-characters, covering the maximum allowed 100 lines,
+512-character IDs and 300-character names even with six-character JSON escapes.
+The same full-cart round trip now passes; oversized untrusted input is still rejected.
+
 Tests cover quantity clamping, integer arithmetic, duplicate/cap handling, immutable
 snapshots, round-trip persistence, malformed/oversized data, blocked storage, SSR,
 payload field whitelisting, routed empty/populated UI, and numeric input reset when
 the clamped Signal value is unchanged.
 
-Production initial size: **245.29 kB**, estimated transfer **67.51 kB**.
+Production initial size: **245.29 kB**, estimated transfer **67.55 kB**.
 Cart page lazy chunk: **7.24 kB**. Both existing 250 kB warning / 350 kB error budgets
 pass unchanged; initial warning headroom is now limited. No full-catalog performance
 claim or browser/assistive-technology certification is made.
