@@ -1,0 +1,26 @@
+<a class="skip-link" href="#main-content" (click)="focusContent($event)">Skip to content</a>
+<header class="site-header">
+  <a routerLink="/shop" class="brand" aria-label="E-Commerce home"
+    >E-Commerce<span aria-hidden="true">.</span></a
+  >
+  <nav aria-label="Main navigation">
+    <a routerLink="/shop" routerLinkActive="active" ariaCurrentWhenActive="page">Shop</a>
+    <a routerLink="/cart" routerLinkActive="active" ariaCurrentWhenActive="page"
+      >Cart ({{ cart.itemCount() }})</a
+    >
+  </nav>
+  <span class="preview-label">Storefront preview</span>
+</header>
+@if (feedback.error(); as message) {
+  <div class="error-notice" role="alert">
+    <p>{{ message }}</p>
+    <button type="button" (click)="dismissError()">Dismiss message</button>
+  </div>
+}
+<main #main id="main-content" tabindex="-1">
+  <router-outlet />
+</main>
+<footer>
+  <p>E-Commerce</p>
+  <p>Purchases are unavailable in this preview.</p>
+</footer>

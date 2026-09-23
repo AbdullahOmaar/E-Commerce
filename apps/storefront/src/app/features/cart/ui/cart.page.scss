@@ -1,0 +1,133 @@
+:host {
+  display: block;
+}
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.04em;
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.15rem;
+}
+.cart-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.55fr);
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+.cart-lines {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.cart-lines li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem auto;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.cart-lines li:first-child {
+  padding-top: 0;
+}
+.product h2 {
+  overflow-wrap: anywhere;
+  margin-top: 0;
+}
+.product p {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+input,
+button {
+  min-height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: white;
+  color: var(--ink);
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+}
+input {
+  width: 100%;
+}
+.quantity-buttons {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.quantity-buttons button {
+  flex: 1;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.text-button {
+  background: transparent;
+  text-decoration: underline;
+  padding-inline: 0;
+  border-color: transparent;
+}
+.quantity-label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.line-total {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.summary,
+.empty-cart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 1.5rem;
+}
+.summary h2,
+.empty-cart h2 {
+  margin-top: 0;
+}
+.summary dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+.summary dd {
+  margin: 0;
+  text-align: end;
+}
+.total {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  font-weight: 700;
+}
+.summary p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.notice {
+  padding: 1rem;
+  border-inline-start: 0.25rem solid #865913;
+  background: #fff5df;
+  color: #5c3c0d;
+}
+@media (max-width: 52rem) {
+  .cart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 30rem) {
+  .cart-lines li {
+    grid-template-columns: minmax(0, 1fr) 7rem;
+  }
+  .line-total {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}

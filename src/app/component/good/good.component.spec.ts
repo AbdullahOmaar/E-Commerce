@@ -1,3 +1,4 @@
+import { configureComponentTest } from '../../testing/component-test';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoodComponent } from './good.component';
@@ -7,10 +8,7 @@ describe('GoodComponent', () => {
   let fixture: ComponentFixture<GoodComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ GoodComponent ]
-    })
-    .compileComponents();
+    await configureComponentTest();
   });
 
   beforeEach(() => {

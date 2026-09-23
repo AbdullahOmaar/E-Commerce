@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Nested tools and local emulator/build output
+**/node_modules/
+.firebase/
+*-debug.log
+/www/
