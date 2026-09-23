@@ -1,8 +1,10 @@
 # Modern storefront foundation
 
-This isolated Angular 22 workspace is the first migration checkpoint. It does not
-replace the root Angular 10 storefront or its native/Hosting build. Its shop page
-is explicitly a preview: catalog data, auth, cart and checkout are not migrated yet.
+This isolated Angular 22 workspace contains the foundation and Signal guest cart.
+It does not replace the root Angular 10 storefront or its native/Hosting build. Its
+shop page is explicitly a preview: catalog data, auth and checkout are not migrated.
+The `/cart` page supports validated local persistence and display-only estimates;
+catalog add-to-cart integration is the next vertical slice.
 
 Use Node 24.19.0 (see `.nvmrc`). Run these commands in this directory:
 
@@ -41,3 +43,5 @@ and document ID; a bare product document ID is not globally unique in this schem
 
 See [the foundation checkpoint](../../docs/enterprise/PHASE_1_FOUNDATION.md) for the
 exact validation scope, unmigrated routes and next acceptance criteria.
+See [the cart checkpoint](../../docs/enterprise/PHASE_2_CART.md) for persistence,
+quantity bounds, the checkout payload and the current 45-test validation scope.

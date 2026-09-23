@@ -1,7 +1,8 @@
 # Decision: stabilize, then re-platform one feature at a time
 
-Date: 2026-09-22. Updated: 2026-09-23. Status: isolated Angular 22 shell implemented;
-feature migration and production cutover remain pending. See PHASE_1_FOUNDATION.md.
+Date: 2026-09-22. Updated: 2026-09-23. Status: isolated Angular 22 shell and Signal
+guest cart implemented. Catalog/auth migration and production cutover remain pending.
+See PHASE_1_FOUNDATION.md and PHASE_2_CART.md.
 
 ## Evidence and decision
 
@@ -64,6 +65,12 @@ Registry commands: `npm view @angular/core version`, `npm view @angular/fire ver
    until the trusted checkout, concurrency/idempotency tests and stock schema exist.
 
 ## Compatibility and rollback
+
+Implementation sequencing update: the Signal guest cart was completed before the
+catalog adapter because its domain-owned snapshot/persistence boundary is independent
+of live data. This establishes UI -> domain port -> browser adapter with no production
+access. The next slice supplies ProductRepository and category-aware catalog identity;
+the cart is not yet connected to catalog or authentication.
 
 - Preserve current routes (`/`, `/home`, `/shop`, `/good`, `/cart`, `/wishlist`,
   `/login`, `/signup`, `/admin`, `/filter`) during the transition; add redirect tests
