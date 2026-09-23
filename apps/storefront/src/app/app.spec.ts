@@ -5,11 +5,16 @@ import { RouterTestingHarness } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 import { ApplicationErrorHandler } from './core/errors/application-error-handler';
 import { routes } from './app.routes';
+import { CartPersistence } from './features/cart/domain/cart.persistence';
 
 describe('standalone storefront navigation', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
+        {
+          provide: CartPersistence,
+          useValue: { available: false, read: () => null, write: () => undefined },
+        },
         provideRouter(routes),
         { provide: ErrorHandler, useClass: ApplicationErrorHandler },
       ],

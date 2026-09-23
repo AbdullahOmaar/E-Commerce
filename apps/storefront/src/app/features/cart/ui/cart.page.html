@@ -1,0 +1,101 @@
+<h1 #heading tabindex="-1">Your cart</h1>
+<p aria-live="polite">{{ cart.itemCount() }} items across {{ cart.lineCount() }} products</p>
+@if (!cart.persistenceAvailable()) {
+  <p class="notice storage-warning" role="status">
+    Your cart works in this tab, but changes cannot be saved on this browser.
+  </p>
+}
+@if (cart.restoredWithCorrections()) {
+  <p class="notice" role="status">
+    Some saved cart items were invalid and have been corrected or removed.
+  </p>
+}
+@if (cart.lineCount()) {
+  <div class="cart-grid">
+    <section aria-label="Cart items">
+      <ul class="cart-lines">
+        @for (line of cart.lines(); track line.productId) {
+          <li>
+            <div class="product">
+              <h2>{{ line.name }}</h2>
+              <p>{{ line.unitPriceMinor / 100 | currency: 'USD' }} each · estimate</p>
+              <button
+                type="button"
+                class="text-button"
+                [attr.aria-label]="'Remove ' + line.name"
+                (click)="remove(line.productId)"
+              >
+                Remove
+              </button>
+            </div>
+            <div class="quantity">
+              <label>
+                <span class="quantity-label">Quantity for {{ line.name }}</span>
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  min="1"
+                  max="99"
+                  step="1"
+                  [value]="line.quantity"
+                  (change)="setQuantity(line.productId, $event)"
+                />
+              </label>
+              <div class="quantity-buttons">
+                <button
+                  type="button"
+                  [disabled]="line.quantity <= 1"
+                  [attr.aria-label]="'Decrease quantity for ' + line.name"
+                  (click)="cart.decrement(line.productId)"
+                >
+                  −
+                </button>
+                <button
+                  type="button"
+                  [disabled]="line.quantity >= 99"
+                  [attr.aria-label]="'Increase quantity for ' + line.name"
+                  (click)="cart.increment(line.productId)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <p class="line-total">
+              {{ (line.unitPriceMinor * line.quantity) / 100 | currency: 'USD' }}
+            </p>
+          </li>
+        }
+      </ul>
+      <button type="button" (click)="clear()">Clear cart</button>
+    </section>
+    <aside aria-labelledby="summary-heading" class="summary">
+      <h2 id="summary-heading">Order estimate</h2>
+      <dl>
+        <div>
+          <dt>Items subtotal</dt>
+          <dd>{{ cart.subtotalEstimateMinor() / 100 | currency: 'USD' }}</dd>
+        </div>
+        <div>
+          <dt>Shipping</dt>
+          <dd>Calculated at checkout</dd>
+        </div>
+        <div>
+          <dt>Tax</dt>
+          <dd>Calculated at checkout</dd>
+        </div>
+        <div class="total">
+          <dt>Estimated total before shipping and tax</dt>
+          <dd>{{ cart.totalEstimateMinor() / 100 | currency: 'USD' }}</dd>
+        </div>
+      </dl>
+      <p>Prices are estimates. Final prices and availability must be confirmed at checkout.</p>
+      <p>Checkout is not available in this preview.</p>
+    </aside>
+  </div>
+} @else {
+  <section class="empty-cart" aria-labelledby="empty-heading">
+    <h2 id="empty-heading">Your cart is empty</h2>
+    <p>Items you add to your cart will appear here.</p>
+    <a routerLink="/shop">Explore the shop</a>
+  </section>
+}

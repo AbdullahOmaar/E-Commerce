@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { FeedbackStore } from '../core/errors/feedback.store';
+import { CartService } from '../features/cart/domain/cart.service';
 
 @Component({
   selector: 'app-storefront-layout',
@@ -13,6 +14,7 @@ import { FeedbackStore } from '../core/errors/feedback.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StorefrontLayout {
+  protected readonly cart = inject(CartService);
   protected readonly feedback = inject(FeedbackStore);
   private readonly main = viewChild<ElementRef<HTMLElement>>('main');
 

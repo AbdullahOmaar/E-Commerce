@@ -14,6 +14,11 @@ export const routes: Routes = [
           import('./features/catalog/catalog.routes').then((module) => module.catalogRoutes),
       },
       {
+        path: 'cart',
+        loadChildren: () =>
+          import('./features/cart/cart.routes').then((module) => module.cartRoutes),
+      },
+      {
         path: '**',
         title: 'Page not found | E-Commerce',
         loadComponent: () =>

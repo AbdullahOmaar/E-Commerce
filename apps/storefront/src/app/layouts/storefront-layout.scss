@@ -3,6 +3,10 @@
   flex-direction: column;
   min-height: 100dvh;
 }
+nav {
+  display: flex;
+  gap: 1.25rem;
+}
 .site-header {
   display: flex;
   align-items: center;

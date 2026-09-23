@@ -5,6 +5,9 @@
   >
   <nav aria-label="Main navigation">
     <a routerLink="/shop" routerLinkActive="active" ariaCurrentWhenActive="page">Shop</a>
+    <a routerLink="/cart" routerLinkActive="active" ariaCurrentWhenActive="page"
+      >Cart ({{ cart.itemCount() }})</a
+    >
   </nav>
   <span class="preview-label">Storefront preview</span>
 </header>
