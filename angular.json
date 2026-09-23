@@ -37,7 +37,6 @@
               "node_modules/animate.css/animate.css",
               "src/styles.scss",
               "node_modules/aos/dist/aos.css"
-
             ],
             "scripts": [
               "node_modules/aos/dist/aos.js"
@@ -62,13 +61,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "6mb"
+                  "maximumWarning": "1.8mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "400kb",
-                  "maximumError": "400kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "30kb"
                 }
               ]
             }
@@ -138,6 +137,6 @@
   },
   "defaultProject": "E-Commerce",
   "cli": {
-    "analytics": "2bb3884f-9448-4e76-bbca-29c31d5035ed"
+    "analytics": false
   }
 }

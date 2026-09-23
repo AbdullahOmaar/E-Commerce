@@ -1,0 +1,14 @@
+{
+  "phase1-lint.txt": {
+    "source_sha256": "bf6b6fbde1a7c3a7538de06c7551dc0854be6199b8fe8288101818c4cdf7daeb",
+    "stored_sha256": "bf6b6fbde1a7c3a7538de06c7551dc0854be6199b8fe8288101818c4cdf7daeb"
+  },
+  "phase1-tests.txt": {
+    "source_sha256": "5202f59f222e5c368252f8994d64a94e560fa72f71479c81317b4e3316b37745",
+    "stored_sha256": "66f5a550c297ace910b8e59927f2c8d1c2953e1a0d075f734dbf79cb9a35cede"
+  },
+  "phase1-build.txt": {
+    "source_sha256": "1b1f97df4ebfdb90a2668443c4a077ba2f7e1939d5ac2e60260789d32ff23aa2",
+    "stored_sha256": "19f4ccdb7655af05b6fc7736bcc6fe24a8427c5d831490bfda3fb7656c4d6651"
+  }
+}

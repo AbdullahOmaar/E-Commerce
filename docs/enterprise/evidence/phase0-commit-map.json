@@ -1,0 +1,96 @@
+{
+  "base": "d0a34afed4e2c071cfa91cbb94c154c42aafda72",
+  "commits": [
+    {
+      "index": 1,
+      "local_commit": "938d0b9291daf9bfa0abd39d75151bf27b3f7c89",
+      "remote_commit": "bf2328537abf834d67df3b75a03553048184f0b5",
+      "tree": "e4758c3e202e1d626035a245daa9344311c5957e",
+      "message": "docs: record fresh enterprise audit at master d0a34af"
+    },
+    {
+      "index": 2,
+      "local_commit": "330734c6751ab1289d53b088ce23c5a5be6710a3",
+      "remote_commit": "694a440c6a859b3e5c87ae718bb856a3b4737a63",
+      "tree": "4040d59c0259dd92d5ed0bedd969dbf9d706b7b2",
+      "message": "fix: deduplicate module imports and isolate public Firebase configuration"
+    },
+    {
+      "index": 3,
+      "local_commit": "e3e88ca7c1124031d4de19a2c89d9318620d505a",
+      "remote_commit": "3f4fa5e0018742675081676ab251e6f39de7309e",
+      "tree": "5575685d56faaa43dd2ea962f8141964323c2758",
+      "message": "test: reproduce stale authentication identity before stabilization"
+    },
+    {
+      "index": 4,
+      "local_commit": "050ef9e1d455f3db1074f02c2780d67073068415",
+      "remote_commit": "e9b6e0980ce22eac8a0ed215ec56c3ab8424fc31",
+      "tree": "07fd0c817de39a494ccc834bb0abae4ad09f11e5",
+      "message": "fix: derive identity from Firebase Auth and guard private routes"
+    },
+    {
+      "index": 5,
+      "local_commit": "f1ebc08166daf76895e0405fcf931b214a4eb54b",
+      "remote_commit": "b88a4a27148925dcf9ff40efc2fba39a239dc769",
+      "tree": "1cc72761a260c1e058ea6e5e8392875a55edc7e5",
+      "message": "build: remove unused dependencies and pin reproducible legacy validation"
+    },
+    {
+      "index": 6,
+      "local_commit": "35db8b1d04c0c60b417eb12af9af567201538faf",
+      "remote_commit": "b15157f119140bd14c0e5e0cebf1d2d5a458f8f8",
+      "tree": "1f492c14913ae9e45c595518c52671f999192f6d",
+      "message": "refactor: add typed legacy data mappers and tested cart estimates"
+    },
+    {
+      "index": 7,
+      "local_commit": "998e2bd0b41930269ffdc7e6cf1522a690c3ba82",
+      "remote_commit": "506cf4ed3542958fe29f80537f0f46dfbdd595a7",
+      "tree": "8c621ea956f53295346306697fd1358c376fe973",
+      "message": "fix: cancel catalog listeners and propagate catalog mutation failures"
+    },
+    {
+      "index": 8,
+      "local_commit": "e89876afa6f4c41d2f50a946ff063be5d1350d51",
+      "remote_commit": "17f139dc924d97113942e1c674c7e142858e00dd",
+      "tree": "e8f7fcccc3dc11d56a5d2778f8e49e95b90ff26f",
+      "message": "fix: isolate user shopping data and persist accurate cart quantities"
+    },
+    {
+      "index": 9,
+      "local_commit": "081e3bf1a2f6b649344ca94189c69b11df979b86",
+      "remote_commit": "83dff6a3b679aa3a303aedc9244b4a164637e330",
+      "tree": "444c7243db654ac2cf923c1a9ad1f5e7d3d5254f",
+      "message": "fix: handle sign-in and partial signup failures with clear feedback"
+    },
+    {
+      "index": 10,
+      "local_commit": "841f00c46ba79a202bf49b36659be5f729af4393",
+      "remote_commit": "f007a19af47f488801c8d87927e0bc6ec405373d",
+      "tree": "143464e157705eb6eca308e7b2ebb09ecd0d956e",
+      "message": "test: repair offline component fixtures and verify guarded navigation"
+    },
+    {
+      "index": 11,
+      "local_commit": "8c07b4826c3ffd2311da1daf32aff6ee373009ff",
+      "remote_commit": "3d44d1075325663184c8f90fae79e2d41f037414",
+      "tree": "a0bd0ab22a37190153461ee7de675ee5304d0d7f",
+      "message": "security: stage default-deny Firebase rules with emulator coverage"
+    },
+    {
+      "index": 12,
+      "local_commit": "3020cfeb927b8db443a1d8461c2f9843768ac876",
+      "remote_commit": "206f52ee6efc538d056830cde31b51d345ceb6e7",
+      "tree": "f9a6269ac69d9236cfddb59f3577517e1db6d2eb",
+      "message": "ci: gate migration with builds tests lint and Firebase emulators"
+    },
+    {
+      "index": 13,
+      "local_commit": "9100fd03b030fa0dcc255a9d38071575ef73c743",
+      "remote_commit": "ff5a99d9f5873ab37f9bdd5803e93ebee170cf78",
+      "tree": "954adf2ba8a3d50c32e2b179cbe7ef050c570747",
+      "message": "docs: record validation evidence migration decision and publication blocker"
+    }
+  ]
+}

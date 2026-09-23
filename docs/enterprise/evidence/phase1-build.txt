@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> storefront@0.0.0 build:production
+> ng build --configuration production
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names                |  Raw size | Estimated transfer size
+main-424EMQDH.js    | main                 | 225.13 kB |                60.78 kB
+styles-FV6JFSLG.css | styles               | 564 bytes |               564 bytes
+
+                    | Initial total        | 225.69 kB |                61.35 kB
+
+Lazy chunk files    | Names                |  Raw size | Estimated transfer size
+chunk-BodwQ6iY.js   | storefront-layout    |   3.89 kB |                 1.52 kB
+chunk-D5nK34k1.js   | catalog-preview-page |   1.44 kB |               657 bytes
+chunk-Cobc_SFC.js   | not-found-page       | 590 bytes |               590 bytes
+chunk-DBc74ujJ.js   | catalog-routes       | 149 bytes |               149 bytes
+
+Application bundle generation complete. [8.516 seconds] - 2026-09-23T09:12:23.907Z
+
+Output location: <repository>/apps/storefront/dist/storefront
+

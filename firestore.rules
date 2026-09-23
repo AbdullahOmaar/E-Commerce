@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owner(uid) { return signedIn() && request.auth.uid == uid; }
+    function admin() { return signedIn() && ('admin' in request.auth.token) && request.auth.token.admin == true; }
+    function validItem(data) {
+      return data.keys().hasAll(['DataId', 'name', 'price', 'photoUrl'])
+        && data.keys().hasOnly(['DataId', 'name', 'price', 'photoUrl', 'amount', 'description', 'category'])
+        && data.DataId is string && data.DataId.size() > 0 && data.DataId.size() <= 1500
+        && data.name is string && data.name.size() <= 500
+        && data.price is number && data.price >= 0 && data.price <= 100000000
+        && data.photoUrl is string && data.photoUrl.size() <= 4096
+        && (!('description' in data) || (data.description is string && data.description.size() <= 10000))
+        && (!('category' in data) || (data.category is string && data.category.size() <= 500));
+    }
+    function validAmount(data) {
+      return data.amount is int && data.amount >= 1 && data.amount <= 99;
+    }
+    match /goods/{category}/item/{productId} {
+      allow read: if true;
+      allow create, update, delete: if admin();
+    }
+    match /category/{categoryId} {
+      allow read: if true;
+      allow create, update, delete: if admin();
+    }
+    match /users/{uid} {
+      allow read: if owner(uid);
+      allow create, update: if owner(uid)
+        && request.resource.data.keys().hasOnly(['name', 'phone'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 200
+        && request.resource.data.phone is string && request.resource.data.phone.size() <= 40;
+      allow delete: if false;
+      match /cart/{lineId} {
+        allow read, delete: if owner(uid);
+        // All price fields here are untrusted display estimates, never checkout authority.
+        allow create: if owner(uid) && validItem(request.resource.data) && validAmount(request.resource.data);
+        // Existing legacy documents can change quantity without rewriting historical metadata.
+        allow update: if owner(uid) && validAmount(request.resource.data)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['amount']);
+      }
+      match /wishlist/{lineId} {
+        allow read, delete: if owner(uid);
+        allow create: if owner(uid) && validItem(request.resource.data)
+          && !('amount' in request.resource.data);
+        allow update: if false;
+      }
+    }
+    match /orders/{orderId} {
+      allow read: if owner(resource.data.userId) || admin();
+      // Only a trusted backend with IAM authorization may create/update orders.
+      allow write: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

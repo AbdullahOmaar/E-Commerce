@@ -1,0 +1,52 @@
+[
+  {
+    "log": "baseline-build.log",
+    "sha256": "1ef41c25da1360f37cdf5c4261d652b98f2b1f1a3c03b1dd5a941516fcc0142e",
+    "bytes": 4309
+  },
+  {
+    "log": "baseline-lint.log",
+    "sha256": "7a8023ee9b5f543f39605ac744102bc75748d5b895f61e5ea10bf858e50c24d7",
+    "bytes": 43468
+  },
+  {
+    "log": "baseline-test.log",
+    "sha256": "119ca7b78780596e8cf3c5ee437767deac3f31eb6003710a376a11a8bb13fab3",
+    "bytes": 76752
+  },
+  {
+    "log": "auth-regression-before.log",
+    "sha256": "910f51d4f6eed9cdf854f7f06a07d513e3d676d4e0a0b77d858aba247ceb695d",
+    "bytes": 4987
+  },
+  {
+    "log": "auth-regression-after.log",
+    "sha256": "bbba28da9db23e193a60a0136f346ebede262313e07265a4aa71085b0706f354",
+    "bytes": 878
+  },
+  {
+    "log": "phase0-production-build.log",
+    "sha256": "0628711279740a76f4b6aa89339b80cc68aabbfa83939055901d167da6bef7ff",
+    "bytes": 4439
+  },
+  {
+    "log": "phase0-lint.log",
+    "sha256": "4489ecb22398976114fd43f6d823c92d27a10e2b9b7903d9ade0e397565dc1c2",
+    "bytes": 48
+  },
+  {
+    "log": "phase0-tests.log",
+    "sha256": "415a80232e3f99d95fb122cdd4a3cbf5c5bf914c5ba7de9105679c810479c2b3",
+    "bytes": 4782
+  },
+  {
+    "log": "security-tests.log",
+    "sha256": "60a45be2857b3563df879a61772699518835a19c22f031494ca0ca4cc63af08f",
+    "bytes": 9324
+  },
+  {
+    "log": "clean-install.log",
+    "sha256": "35b9d3b4fb6c268827df8d9d06bc30cd4ac3e31636598c404ec3032aa34aa025",
+    "bytes": 100
+  }
+]
